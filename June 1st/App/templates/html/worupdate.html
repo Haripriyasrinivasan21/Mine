@@ -1,0 +1,16 @@
+{% extends 'html/base.html' %}
+{% block title %}Update Worker Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto">
+		<div class="card-body">
+			<h3>Worker details</h3>
+			<form method="POST">
+				{% csrf_token %}
+				{{w.as_p}}
+				<input type="submit" value="Submit" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

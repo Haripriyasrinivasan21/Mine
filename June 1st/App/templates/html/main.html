@@ -1,0 +1,78 @@
+{% extends 'html/base.html' %}
+{% block title %}Main Page{% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="jumbotron">
+		{% if user.is_superuser %}
+		<h3>Super User</h3>
+		{% elif user.role == 1 %}
+		<h3>Hi {{user.username}} Donor, Here are your Donations... :)</h3>
+		<h4>Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4>
+		{% elif user.role == 2 %}
+		<h3>Organiser</h3>
+		{% else %}
+		<h3>Guest</h3>
+		{% endif %}
+	</div>
+		{% if user.role == 1 %}
+	<div class="row">
+			{% for j in h %}
+	<div class="col col-md-4">
+	<div class="card my-2 mx-1">
+	<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:300px;width:100%">
+	<div class="card-body">
+	<h5 class="text-danger">Periodically Donating</h5>
+	<h5>Donation By : {{j.username}}</h5>
+	<h5>Donating To : {{j.donating_to}}</h5>
+	<a href="{% url 'dtab1' %}" class="btn btn-secondary form-control">View</a>
+</div>
+</div>
+</div>
+{% endfor %}
+{% for j in o %}
+<div class="col col-md-4">
+<div class="card my-2 mx-1">
+<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:300px;width:100%">
+<div class="card-body">
+	<h5 class="text-warning">Occassionally Donating</h5>
+	<h5>Donation By : {{j.username}}</h5>
+	<h5>Donating To : {{j.donating_to}}</h5>
+<a href="{% url 'dtab2' %}" class="btn btn-secondary form-control">View</a>
+</div>
+</div>
+</div>
+{% endfor %}
+		
+</div>
+{% endif %}
+
+{% if user.role == 2 %}
+	<div class="row">
+			{% for j in s %}
+	<div class="col col-md-4">
+	<div class="card my-2">
+	<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:150px;width:100%">
+	<div class="card-body">
+		<h5>Donated By : {{j.username}}</h5>
+		<h5>Donated to: {{j.donating_to}}</h5>
+		<a href="#" class="btn btn-secondary form-control">View</a>
+	</div>
+</div>
+</div>
+{% endfor %}
+	{% for i in oc %}
+	<div class="col col-md-4">
+	<div class="card my-2">
+	<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:150px;width:100%">
+	<div class="card-body">
+		<h5>Donated By : {{i.username}}</h5>
+		<h5>Donated to: {{i.donating_to}}</h5>
+		<a href="#" class="btn btn-secondary form-control">View</a>
+	</div>
+</div>
+</div>
+{% endfor %}	
+</div>
+{% endif %}
+</div>
+{% endblock %}

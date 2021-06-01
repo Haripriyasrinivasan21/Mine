@@ -1,0 +1,45 @@
+{% extends 'html/base.html' %}
+{% block title %}Worker Details{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+	<div class="card col-md mt-2 mx-2 shadow-lg">
+			<div class="card-body">
+                        {% if dh %}
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>Worker Name</th>
+						<th>Worker Gender</th>
+						<th>Worker DOB</th>
+						<th>Worker Age</th>
+						<th>Worker Ph</th>
+						<th>Worker Address</th>
+						<th>Working As</th>
+						<th>Joining Date</th>
+						<th>Years Worked</th>
+						<th>Exit Date</th>
+						<th>Salary</th>
+						<th>Actions</th>
+					</tr>
+            		<tr>
+            			<td>{{dh.worker_name}}</td>
+            			<td>{{dh.worker_gen}}</td>
+            			<td>{{dh.worker_dob}}</td>
+            			<td>{{dh.worker_age}}</td>
+            			<td>{{dh.worker_ph}}</td>
+            			<td>{{dh.worker_add}}</td>
+            			<td>{{dh.working_as}}</td>
+            			<td>{{dh.joining_date}}</td>
+            			<td>{{dh.yrs_worked}}</td>
+            			<td>{{dh.exit_date}}</td>
+            			<td>{{dh.salary}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'worup' dh.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
+            				<a href="{% url 'wordel' dh.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+            			</td>
+            		</tr>
+            		{% endif %}
+            	</table>
+			</div>
+		</div>
+</div>
+{% endblock %}

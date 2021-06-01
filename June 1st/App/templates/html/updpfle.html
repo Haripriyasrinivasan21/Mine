@@ -1,0 +1,105 @@
+{% extends 'html/base.html' %}
+{% block title %} Update {% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card">
+  	<h3 class="m-3">User Details Update</h3>
+  	<form method="post" enctype="multipart/form-data" class="mx-2">
+  		{% csrf_token %}
+  		<div class="row">
+  			<div class="col">
+  			{% for n in x %}
+  				{% if forloop.counter == 1 %}
+  				<div class="row">
+  					<div class="col">
+  						<td>{{n}}</td>
+  					</div>
+  				</div>
+  				{% elif forloop.counter == 2 %}
+  				<div class="row">
+  					<div class="col">
+  						<td>{{n}}</td>
+  					</div>
+  				</div>
+  				{% elif forloop.counter == 3 %}
+			<div class="row">
+				{% if user.role == 1 or user.role == 3 %}
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+				{% endif %}
+				{% elif forloop.counter == 4 %}
+				{% if user.role == 1 or user.role == 3%}
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+				{% endif %}
+			</div>
+			{% elif forloop.counter == 5 %}
+			<div class="row">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+				{% elif forloop.counter == 6 %}
+				{% if user.role == 1 or user.role == 3 %}
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+				{% endif %}
+			</div>
+			{% elif forloop.counter == 7 %}
+			<div class="row">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+			</div>
+			{% elif forloop.counter == 8 %}
+  			<div class="row">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  				{% elif forloop.counter == 9 %}
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% endif %}
+  			{% endfor %}
+  		</div>
+  		<div class="col">
+  			{% for n in x %}
+  			{% if forloop.counter == 10 %}
+  			<div class="row">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  				{% elif forloop.counter == 11 %}
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% elif forloop.counter == 12 %}
+  			<div class="row my-2">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% endif %}
+  			{% endfor %}
+  			{% for c in k %}
+  			<td>{{c}}</td>
+  			{% endfor %}
+  			<div class="row">
+  				<div class="col">
+  					<a href="{% url 'pf' %}" class="btn btn-outline-warning my-3 col-sm">Back to Profile</a>
+  				</div>
+  				<div class="col">
+  					<input type="submit" value="Update" class="btn btn-outline-success my-3 col-sm">
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  	</form>
+  </div>
+</div>
+{% endblock %}

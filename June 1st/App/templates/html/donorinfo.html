@@ -1,0 +1,56 @@
+{% extends 'html/base.html' %}
+{% block title %}Donor Info{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+		<div class="row">
+				<div class="card col-md-4 mt-2 shadow-lg">
+				<div class="card-body">
+				<form method="POST">
+				{% csrf_token %}
+				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Donor Info</h3>
+				<table>
+				<tr>{{d.as_p}}</tr>
+			   </table>
+				<div class="row">
+						<div class="col">
+							<input type="reset" value="Reset" class="btn btn-danger col-sm">
+						</div>
+						<div class="col">
+							<input type="submit" class="form-control btn btn-success col-sm" value="Submit">
+						</div>
+				</div>
+				</form>
+			</div>
+		</div>
+		<div class="card col-md mt-2 mx-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donor Name</th>
+						<th>Donor MailID</th>
+						<th>Donated Value</th>
+						<th>Donated on</th>
+						<th>Used for</th>
+						<th>Actions</th>
+					</tr>
+            		{% for k in n %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{k.donor_name}}</td>
+            			<td>{{k.donor_email}}</td>
+            			<td>{{k.donated_thing}}</td>
+            			<td>{{k.donated_on}}</td>
+            			<td>{{k.used_for}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'diup' k.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
+            				<a href="{% url 'dondel' k.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

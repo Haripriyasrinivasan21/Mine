@@ -1,0 +1,16 @@
+{% extends 'html/base.html' %}
+{% block title %}Update User Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto">
+		<div class="card-body">
+			<h3>Donor details</h3>
+			<form method="POST">
+				{% csrf_token %}
+				{{q.as_p}}
+				<input type="submit" value="Submit" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

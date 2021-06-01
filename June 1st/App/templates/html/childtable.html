@@ -1,0 +1,41 @@
+{% extends 'html/base.html' %}
+{% block title %}Child Details{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+<div class="card col-md mt-2 mx-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Child Name</th>
+						<th>Child Gender</th>
+						<th>Child DOB</th>
+						<th>Child Age</th>
+						<th>Joining Date</th>
+						<th>Years Stayed</th>
+						<th>Exit Date</th>
+						<th>About</th>
+						<th>Actions</th>
+					</tr>
+            		{% for i in h %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{i.child_name}}</td>
+            			<td>{{i.child_gen}}</td>
+            			<td>{{i.child_dob}}</td>
+            			<td>{{i.child_age}}</td>
+            			<td>{{i.joining_date}}</td>
+            			<td>{{i.yrs_stayed}}</td>
+            			<td>{{i.exit_date}}</td>
+            			<td>{{i.about}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'chupd' i.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
+            				<a href="{% url 'chdel' i.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+</div>
+{% endblock %}

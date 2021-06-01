@@ -1,0 +1,40 @@
+{% extends 'html/base.html' %}
+{% block title %}Child Details{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+<div class="card col-md mt-2 mx-2 shadow-lg">
+                  <div class="card-body">
+                        {% if sh %}
+                        <table class="table table-borderless table-center">
+                              <tr class="bg-dark text-light text-center">
+                                    <th>Child Name</th>
+                                    <th>Child Gender</th>
+                                    <th>Child DOB</th>
+                                    <th>Child Age</th>
+                                    <th>Joining Date</th>
+                                    <th>Years Stayed</th>
+                                    <th>Exit Date</th>
+                                    <th>About</th>
+                                    <th>Actions</th>
+                              </tr>
+                        
+                        <tr>
+                              <td>{{sh.child_name}}</td>
+                              <td>{{sh.child_gen}}</td>
+                              <td>{{sh.child_dob}}</td>
+                              <td>{{sh.child_age}}</td>
+                              <td>{{sh.joining_date}}</td>
+                              <td>{{sh.yrs_stayed}}</td>
+                              <td>{{sh.exit_date}}</td>
+                              <td>{{sh.about}}</td>
+                              <td colspan="3">
+                                    <a href="{% url 'chupd' sh.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
+                                    <a href="{% url 'chdel' sh.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+                              </td>
+                        </tr>
+                        {% endif %}
+                  </table>
+                  </div>
+            </div>
+</div>
+{% endblock %}

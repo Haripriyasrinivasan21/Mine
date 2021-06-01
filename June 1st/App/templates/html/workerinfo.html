@@ -1,0 +1,103 @@
+{% extends 'html/base.html' %}
+{% block title %}Worker Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md mt-2 mx-auto shadow-lg">
+		<div class="card-body">
+				<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Worker Details</h3>
+				<!-- <table>
+				<tr>{{w.as_p}}</tr>
+			   </table> -->
+			   <div class="row">
+  			<div class="col">
+  			{% for n in w %}
+  				{% if forloop.counter == 1 %}
+  				<div class="row my-2">
+  					<div class="col">
+  						<td>{{n}}</td>
+  					</div>
+  				</div>
+  				{% elif forloop.counter == 2 %}
+  				<div class="row my-2">
+  					<div class="col">
+  						<td>{{n}}</td>
+  					</div>
+  				</div>
+  				{% elif forloop.counter == 3 %}
+			<div class="row my-2">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+				{% elif forloop.counter == 4 %}
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+			</div>
+			{% elif forloop.counter == 5 %}
+			<div class="row my-2">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+			</div>
+				{% elif forloop.counter == 6 %}
+				<div class="row my-2">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+			</div>
+			{% endif %}
+  			{% endfor %}
+  		</div>
+  		<div class="col">
+  			{% for n in w %}
+  			{% if forloop.counter == 7 %}
+  			<div class="row my-2">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  				{% elif forloop.counter == 8 %}
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% elif forloop.counter == 9 %}
+  			<div class="row my-2">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  				{% elif forloop.counter == 10 %}
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% elif forloop.counter == 11 %}
+  			<div class="row my-2">
+  				<div class="col">
+  					<td>{{n}}</td>
+  				</div>
+  			</div>
+  			{% elif forloop.counter == 12 %}
+			<div class="row my-2">
+				<div class="col">
+					<td>{{n}}</td>
+				</div>
+			</div>
+  			{% endif %}
+  			{% endfor %}
+	
+				<div class="row">
+						<div class="col">
+							<input type="reset" value="Reset" class="btn btn-danger col-sm">
+						</div>
+						<div class="col">
+							<input type="submit" class="form-control btn btn-success col-sm" value="Submit">
+						</div>
+				</div>
+				</form>
+			</div>
+		</div>
+		
+</div>
+{% endblock %}

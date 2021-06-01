@@ -1,0 +1,83 @@
+{% extends 'html/base.html' %}
+{% block title %} Infomation {% endblock %}
+{% block content %}
+<div class="container-fluid mt-2">
+	<div class="card-body">
+		<div id="tabs">
+  			<ul> 
+    			<li><a href="#tab1"class="btn btn col-sm my-2 mx-auto"><h5>Yearly / Monthly / Quarterly / One Time Donation</h5></a></li>
+    			<li><a href="#tab2"class="btn btn col-sm my-2 mx-auto"><h5>Any Occasion</h5></a></li>
+  			</ul>
+  			<div id="tab1">
+  				<div class="container-fluid mt-2">
+				<div class="row">
+  				<div class="card col-md mt-2 shadow-lg">
+				<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donation By</th>
+						<th>Donating Way</th>
+						<th>Donating to</th>
+						<th>Sponsor Way</th>
+						<th>Donation Date</th>
+					</tr>
+            		{% for k in d %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{k.username}}</td>
+            			<td>{{k.ways_to_donate}}</td>
+            			<td>{{k.donating_to}}</td>
+            			<td>{{k.sponsor_way}}</td>
+            			<td>{{k.donating_date}}</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="tab2">
+	<div class="container-fluid mt-2">
+	<div class="row">
+		<div class="card col-md mt-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donation By</th>
+						<th>Donating Way</th>
+						<th>Occassion Name</th>
+						<th>Donating to</th>
+						<th>Sponsor Way</th>
+						<th>Donation Date</th>
+					</tr>
+            		{% for j in o %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{j.username}}</td>
+            			<td>{{j.donating_way}}</td>
+            			<td>{{j.occ_name}}</td>
+            			<td>{{j.donating_to}}</td>
+            			<td>{{j.sponsor_way}}</td>
+            			<td>{{j.donating_on}}</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+
+{% endblock %}

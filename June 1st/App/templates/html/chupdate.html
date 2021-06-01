@@ -1,0 +1,16 @@
+{% extends 'html/base.html' %}
+{% block title %}Update Child Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-6 mx-auto">
+		<div class="card-body">
+			<h3>Child details</h3>
+			<form method="POST">
+				{% csrf_token %}
+				{{c.as_p}}
+				<input type="submit" value="Submit" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

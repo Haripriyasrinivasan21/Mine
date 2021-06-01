@@ -1,0 +1,48 @@
+{% extends 'html/base.html' %}
+{% block title %}Donation Infomation {% endblock %}
+{% block content %}
+<div class="container-fluid mt-2">
+	<div class="card-body">
+  				<div class="container-fluid mt-2">
+				<div class="row">
+  				<div class="card col-md mt-2 shadow-lg">
+				<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donation By</th>
+						<th>Donating Way</th>
+						<th>Donating to</th>
+						<th>Sponsor Way</th>
+						<th>Donating On</th>
+						<th>Actions</th>
+					</tr>
+            		{% for k in x %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{k.username}}</td>
+            			<td>{{k.ways_to_donate}}</td>
+            			<td>{{k.donating_to}}</td>
+            			<td>{{k.sponsor_way}}</td>
+            			<td>{{k.donating_date}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'up' k.id %}" class="btn btn-outline-success mx-1 text-success">Update</a>
+            				<a href="{% url 'dele' k.id %}" class="btn btn-outline-danger mx-1 text-danger">Delete</a>
+            				{% if k.sponsor_way == 'Money' %}
+		    				<a href="" class="btn btn-outline-info text-info mx-1">Proceed</a>
+            				{% elif k.sponsor_way == 'Food' %}
+		    				<a href="{% url 'msg' k.id %}" class="btn btn-outline-info mx-1 text-info ">Proceed</a>
+		    				{% elif k.sponsor_way == 'Clothes' %}
+		    				<a href="{% url 'msg' k.id %}" class="btn btn-outline-info text-info  mx-1">Proceed</a>
+		    				{% else %}
+		    				<a href="#" class="btn btn-secondary">None</a>
+		    				{% endif %}
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

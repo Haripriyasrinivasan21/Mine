@@ -1,0 +1,98 @@
+{% load static %}
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <img src="{% static 'images/gif.gif' %}" alt="logo" style="width:100px;height:50px">
+  <!-- <a class="navbar-brand" href="{% url 'hm' %}"> Children Welfare
+</a> -->
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      {% if not user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'hm' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'rg' %}">Register Here</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'lg' %}">Login</a>
+      </li>
+      {% elif user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mn' %}">Main</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="{% url 'gv' %}">Permissions</a>
+      </li>
+      <li class="dropdown">
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+  </div>
+</li>
+      {% elif user.role == 1 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mn' %}">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'don' %}">Donate</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'join' %}">Join Us</a>
+      <li class="dropdown">
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+  </div>
+</li>
+{% elif user.role == 2 %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'vi' %}">Donations</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dash' %}">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'ci' %}">Add Children Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'wi' %}">Add Worker's Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'di' %}">Add Donor Info</a>
+      </li>
+      <li class="dropdown">
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+  </div>
+</li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'mn' %}">Main</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dash' %}">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'rq' %}">Service Request</a>
+      </li> 
+      <li class="dropdown">
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+  </div>
+</li>
+      {% endif %}  
+    </ul>
+  </div>  
+</nav>

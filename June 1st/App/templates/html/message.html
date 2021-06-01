@@ -1,0 +1,14 @@
+{% extends 'html/base.html' %}
+{% block title %}Message{% endblock %}
+{% block content %}
+<div class="container mt-5">
+	<div class="card-md-5">
+	<div class="jumbotron">
+		<h3 class="text-info">Dear {{user.username}} ,</h3>
+		<h3>Thank You for your thought of Donating {{q.sponsor_way}} to our organisation, Futher details will be mailed to you soon ...!!!</h3>
+	  </div>
+	</div>
+</div>
+{% endblock %}
+
+

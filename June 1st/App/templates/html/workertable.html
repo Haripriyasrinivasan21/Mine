@@ -1,0 +1,47 @@
+{% extends 'html/base.html' %}
+{% block title %}Worker Details{% endblock %}
+{% block content %}
+<div class="container-fluid mt-4">
+	<div class="card col-md mt-2 mx-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Worker Name</th>
+						<th>Worker Gender</th>
+						<th>Worker DOB</th>
+						<th>Worker Age</th>
+						<th>Worker Ph</th>
+						<th>Worker Address</th>
+						<th>Working As</th>
+						<th>Joining Date</th>
+						<th>Years Worked</th>
+						<th>Exit Date</th>
+						<th>Salary</th>
+						<th>Actions</th>
+					</tr>
+            		{% for j in r %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{j.worker_name}}</td>
+            			<td>{{j.worker_gen}}</td>
+            			<td>{{j.worker_dob}}</td>
+            			<td>{{j.worker_age}}</td>
+            			<td>{{j.worker_ph}}</td>
+            			<td>{{j.worker_add}}</td>
+            			<td>{{j.working_as}}</td>
+            			<td>{{j.joining_date}}</td>
+            			<td>{{j.yrs_worked}}</td>
+            			<td>{{j.exit_date}}</td>
+            			<td>{{j.salary}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'worup' j.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
+            				<a href="{% url 'wordel' j.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+</div>
+{% endblock %}

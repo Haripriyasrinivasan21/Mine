@@ -1,0 +1,34 @@
+{% extends 'html/base.html' %}
+{% block title %}Donate{% endblock %}
+{% block content %}
+<div class="container">
+      <div class="jumbotron mt-4">
+            <h3>Your Donation of any amount at this crucial time can really help vulnerable children more than ever! Your support is Vital!</h3>
+      </div>
+		<div class="card col-md mt-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Organisation Name</th>
+						<th>Founder Name</th>
+						<th>Established On</th>
+						<th>No.of Childrens</th>
+						<th>Actions</th>
+					</tr>
+            		{% for i in q %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{i.org_name}}</td>
+            			<td>{{i.found_name}}</td>
+            			<td>{{i.est_date}}</td>
+            			<td>{{i.no_of_childrens}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'don' %}" class="btn btn-outline-info my-2">Donate</a>
+                                    <a href="{% url 'join' %}" class="btn btn-outline-success my-2">JoinUs</a><br>
+                              </td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+</div>
+{% endblock %}

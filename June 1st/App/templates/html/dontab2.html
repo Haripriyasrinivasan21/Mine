@@ -1,0 +1,50 @@
+{% extends 'html/base.html' %}
+{% block title %}Donation Infomation {% endblock %}
+{% block content %}
+<div class="container-fluid mt-2">
+	<div class="row">
+		<div class="card col-md mt-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donation By</th>
+						<th>Donating Way</th>
+						<th>Occassion Name</th>
+						<th>Donating to</th>
+						<th>Sponsor Way</th>
+						<th>Donating On</th>
+						<th>Actions</th>
+					</tr>
+            		{% for j in h %}
+            		<tr>
+            			<td>{{forloop.counter}}.</td>
+            			<td>{{j.username}}</td>
+            			<td>{{j.donating_way}}</td>
+            			<td>{{j.occ_name}}</td>
+            			<td>{{j.donating_to}}</td>
+            			<td>{{j.sponsor_way}}</td>
+            			<td>{{j.donating_on}}</td>
+            			<td colspan="3">
+            				<a href="{% url 'occdet' j.id %}" class="btn btn-outline-success mx-1 my-1 text-success">Update</a><br>
+            				<a href="{% url 'odel' j.id %}" class="btn btn-outline-danger mx-1 my-1 text-danger">Delete</a><br>
+            				{% if j.sponsor_way == 'Money' %}
+		    				<a href="" class="btn btn-outline-info text-info my-1 mx-1">Proceed</a>
+            				{% elif j.sponsor_way == 'Food' %}
+		    				<a href="{% url 'occmsg' j.id %}" class="btn btn-outline-info mx-1 my-1 text-info ">Proceed</a>
+		    				{% elif j.sponsor_way == 'Clothes' %}
+		    				<a href="{% url 'occmsg' j.id %}" class="btn btn-outline-info text-info mx-1 my-1">Proceed</a>
+		    				{% else %}
+		    				<a href="#" class="btn btn-secondary">None</a>
+		    				{% endif %}
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+{% endblock %}
