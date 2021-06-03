@@ -1,0 +1,32 @@
+{% extends 'html/base.html' %}
+{% block title %}Child Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md-10 mt-2 mx-auto shadow-lg">
+		<div class="card-body">
+			<h3 class="text-center">CONTACT US <i class='fas fa-phone'></i><hr></h3>
+			<h5 class="text-center text-info"><i class='fas fa-heart' style='color:pink'></i> WE’D LOVE TO HEAR FROM YOU <i class='fas fa-heart' style='color:pink'></i></h5>
+				<h6 class="text-center text-info">Call us, email us, or just fill out this form.<br>We'll respond to you at our earliest convenience <i class='far fa-smile' style='color:pink'></i></h6><hr>
+				<div class="mx-auto col-md-5 ">
+				<form method="POST" enctype="multipart/form-data">
+				<h4 class="text-center text-success">Send Us a Message <i class='fas fa-comments' style='color:green'></i></h4>
+				{% csrf_token %}
+				<input type="text" name="uname" placeholder="Enter Username" class="form-control my-2" value="{{request.user.username}}" readonly>
+				<input type="email" name="email" placeholder="Enter your Mail ID" class="form-control my-2">
+				<textarea class="form-control my-2" cols="10" rows="5" placeholder="Leave us a message" name="msg"></textarea>
+				<div class="row">
+					<div class="col">
+					<input type="reset" name="Reset" class="btn btn-outline-danger col-sm">
+					</div>
+					<div class="col">
+					<input type="submit" value="Submit" class="btn btn-outline-success col-sm">
+					</div>
+                </div>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

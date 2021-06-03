@@ -1,0 +1,50 @@
+{% extends 'html/base.html' %}
+{% block title %}Child Details{% endblock %}
+{% block content %}
+<div class="container mt-4">
+	<div class="card col-md mt-2 mx-auto shadow-lg">
+		<div class="card-body">
+			<h4 class="text-info text-center">Welcome...Know about the Organisations <i class='far fa-grin-beam' style='font-size:24px'></i></h4>
+			<div id="accordion">
+	<h3>About The Organisations Here...<i class='fas fa-hand-point-down' style='font-size:18px'></i></h3>
+  <div>
+     <h3 class="text-success"> Hey there..., <br>You can click the tab below to know about your specified Organisations :)<br>You can also contact them by clicking the "Contact Us" button right there...!!<br>Don't forget to give us your valuable suggestions in the feedback form <i class='far fa-smile' style='font-size:24px'></i><br>
+     Thanks in Advance <i class='far fa-grin-wink' style='font-size:24px'></i></h3>
+  </div>
+  <h3>About Child Care</h3>
+  <div>
+     Founder is Kelvin <br>
+   <a href="{% url 'con' %}" class="btn btn-outline-info text-info ">Contact Us</a>
+  </div>
+  <h3>About Orphanage</h3>
+  <div>
+    <p>
+    Founder is Salvatore <br> 
+    <a href="{% url 'con' %}" class="btn btn-outline-info text-info">Contact Us</a>
+    </p>
+  </div>
+  <h3>Organisation 3</h3>
+  <div>
+    <p>Yet to Come 
+    </p>
+    <ul>
+      <li>List item one</li>
+      <li>List item two</li>
+      <li>List item three</li>
+    </ul>
+    <a href="{% url 'con' %}" class="btn btn-outline-info text-info">Contact Us</a>
+  </div>
+  <h3>Organisation 4</h3>
+  <div>
+    <a href="{% url 'con' %}" class="btn btn-outline-info text-info">Contact Us</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  $( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+{% endblock %}

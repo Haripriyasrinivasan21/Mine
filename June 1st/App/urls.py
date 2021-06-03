@@ -48,5 +48,7 @@ urlpatterns = [
     path('vis/',views.visible,name="vi"),
     path('chview/<int:cv>/',views.childview,name="chv"),
     path('worview/<int:wv>/',views.workerview,name="worv"),
+    path('cont/',views.contactus,name="con"),
+    path('abus/',views.aboutus,name="aus"),
 
 ]

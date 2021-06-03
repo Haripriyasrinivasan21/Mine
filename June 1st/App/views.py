@@ -129,8 +129,8 @@ def dnrpfle(request):
 	z = PrfUpd(instance=f)
 	return render(request,'html/dnrpfle.html',{'x':z})
 
+
 def donate(request):
-	#a=Orgdetails.objects.all()
 	if request.method == "POST":
 		e=DonateForm(request.POST)
 		f=OccDonateForm(request.POST)
@@ -355,5 +355,22 @@ def information(request):
 	o=OccDonate.objects.all()
 	return render(request,'html/information.html',{'d':d,'o':o})
 
+def contactus(request):
+	if request.method=="POST":
+		u=request.POST.get('uname')
+		e=request.POST.get('email')
+		ms=request.POST.get('msg')
+		a="Hi Organiser,""<br/>" "I "+u+" wanted to know about "+ms+".""<br/>" "Please let me know the details soon..!!" 
+		t = EmailMessage("Contacting Us",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		t.content_subtype='html'
+		t.send()
+		if t==1:
+			return redirect('/main')
+		else:
+			return redirect('/main')
+	return render(request,'html/contactus.html')
+
+def aboutus(request):
+	return render(request,'html/aboutus.html')
 
 
