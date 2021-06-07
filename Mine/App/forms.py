@@ -3,18 +3,18 @@ from django import forms
 from App.models import User,Rolrq,Orgdetails,Donate,OccDonate,Child_details,Worker_details,Donor_info
 
 class UsrReg(UserCreationForm):
-	password1 = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control my-2","placeholder":"Password"}))
-	password2 = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control my-2","placeholder":"Confirm Password"}))	
+	password1 = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control-plaintext my-2","placeholder":"Password"}))
+	password2 = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control-plaintext my-2","placeholder":"Confirm Password"}))	
 	class Meta:
 		model = User
 		fields = ["username","email"]
 		widgets = {
 		"username":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Username",
 			}),
 		"email":forms.EmailInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Email Id",
 			}),
 		}

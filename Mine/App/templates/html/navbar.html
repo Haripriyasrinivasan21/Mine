@@ -11,13 +11,13 @@
     <ul class="navbar-nav">
       {% if not user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'hm' %}"><i class="fas fa-home">Home</a>
+        <a class="nav-link" href="{% url 'hm' %}"><i class="fas fa-home"></i> Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'rg' %}">Register Here</a>
+        <a class="nav-link" href="{% url 'rg' %}"><i class='fas fa-user-plus'></i> Register Here</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'lg' %}"><i class="fas fa-address-card">Login</a>
+        <a class="nav-link" href="{% url 'lg' %}"><i class="fas fa-address-card"></i> Login</a>
       </li>
       {% elif user.is_superuser %}
       <li class="nav-item">
@@ -56,19 +56,19 @@
 </li>
 {% elif user.role == 2 %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'vi' %}"><i class='fas fa-gift'></i>Donations</a>
+        <a class="nav-link" href="{% url 'vi' %}"><i class='fas fa-gift'></i> Donations</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'dash' %}">Dashboard</a>
+        <a class="nav-link" href="{% url 'dash' %}"><i class='fas fa-address-card'></i> Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'ci' %}">Add Children Details</a>
+        <a class="nav-link" href="{% url 'ci' %}"><i class="fa fa-child"></i> Add Children Details</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'wi' %}">Add Worker's Details</a>
+        <a class="nav-link" href="{% url 'wi' %}"><i class='fas fa-user-friends'></i> Add Worker's Details</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'di' %}">Add Donor Info</a>
+        <a class="nav-link" href="{% url 'di' %}"><i class='fas fa-user-edit'></i> Add Donor Info</a>
       </li>
       <li class="dropdown">
        <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>

@@ -1,7 +1,10 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Main Page{% endblock %}
 {% block content %}
-<div class="container mt-5">
+<div class="bg-image"
+	style="background-image:url('https://wallpapercave.com/wp/wp2634942.jpg');background-repeat:no-repeat;background-size:100%;">
+<div class="container mt-2">
 	<div class="jumbotron">
 		{% if user.is_superuser %}
 		<h3>Super User</h3>

@@ -1,11 +1,14 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Register{% endblock %}
 {% block content %}
-<div class="container mt-4">
-	<div class="card col-md-6 mx-auto shadow-lg">
-		<div class="card-body">
-			<h3>Registration</h3>
-			<form method="post">
+<div class="bg-image"
+	style="background-image:url('https://i.pinimg.com/originals/51/cf/6d/51cf6d559dee8c795d24a683cddf0871.jpg');background-repeat:no-repeat;background-size:100%;height:100%">
+<div class="container col-md-4">
+	<!-- <div class="card col-md-6 mx-auto shadow-lg">
+		<div class="card-body"> -->
+			<h3 class="text-center">Registration Page</h3>
+			<form method="post" class="my-5">
 				{% csrf_token %}
 				{% for j in f %}
 				<tr>
@@ -24,7 +27,6 @@
 					</div>
 				</div>
 			</form>
-		</div>
 	</div>
 </div>
 {% endblock %}
