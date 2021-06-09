@@ -1,27 +1,48 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %} Profile {% endblock %}
 {% block content %}
-<div class="container mt-4">
+<div class="bg-image"
+	style="background-image:url('https://wallpapercave.com/wp/wp2634970.jpg');background-repeat:no-repeat;background-size:100%; height:100%">
+<div class="container mt-1">
 	<div class="row">
 		<div class="card col-md-4 mx-2">
 			<img src="{{user.img.url}}">
 		</div>
-		<div class="card col">
+		<div class="col-md-6">
 			<h3>User Details</h3>
 			<table class="table table-borderless">
 				<tr>
-					<th>Username </th>
+					<th>Username:</th>
 					<td>{{user.username}}</td>
-					<th>Date of Birth </th>
+					<th>EmailID:</th>
+					<td>{{user.email}}</td>
+					<th>BirthDate:</th>
 					<td>{{user.dob}}</td>
 				</tr>
 				<tr>
-					<th>Gender</th>
+					<th>Gender:</th>
 					<td>{{user.gender}}</td>
-					<th>Phone Number</th>
+					<th>PhoneNo:</th>
 					<td>{{user.ph_no}}</td>
-					<th>Postal Code</th>
+					<th>Pan No:</th>
+					<td>{{user.pan_no}}</td>
+				</tr>
+				<tr>
+					<th>Address:</th>
+					<td>{{user.address}}</td>
+					<th></th>
+					<td></td>
+					<th>PIN Code:</th>
 					<td>{{user.postal_code}}</td>
+				</tr>
+				<tr>
+					<th>City:</th>
+					<td>{{user.city}}</td>
+					<th>State:</th>
+					<td>{{user.state}}</td>
+					<th>Country:</th>
+					<td>{{user.country}}</td>
 				</tr>
 			</table>
 			<div class="row">
@@ -30,15 +51,15 @@
 				</div>
 				{% if user.role == 2 and not user.orgdetails.us_id %}
 				<div class="col">
-					<a href="{% url 'og' %}" class="btn btn-outline-info my-2 col-sm">Org Entry</a>
+					<a href="{% url 'og' %}" class="btn btn-outline-success my-2 col-sm">Org Entry</a>
 				</div>
 				{% elif user.role == 1 or user.role == 3 %}
 				<div class="col">
-					<a href="{% url 'dntpf' %}" class="btn btn-outline-info col-sm my-2">Update</a>	
+					<a href="{% url 'dntpf' %}" class="btn btn-outline-success col-sm my-2">Update</a>	
 				</div>
 				{% else %}
 				<div class="col">
-					<a href="{% url 'upf' %}" class="btn btn-outline-info col-sm my-2">Update</a>
+					<a href="{% url 'upf' %}" class="btn btn-outline-success col-sm my-2">Update</a>
 				</div>
 				{% endif %}
 			</div>

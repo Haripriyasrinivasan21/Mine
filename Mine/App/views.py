@@ -372,5 +372,3 @@ def contactus(request):
 
 def aboutus(request):
 	return render(request,'html/aboutus.html')
-
-

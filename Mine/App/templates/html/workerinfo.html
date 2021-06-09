@@ -1,12 +1,15 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Worker Details{% endblock %}
 {% block content %}
-<div class="container mt-4">
-	<div class="card col-md mt-2 mx-auto shadow-lg">
+<div class="bg-image"
+	style="background-image:url('https://wallpapercave.com/wp/wp7728108.jpg');background-repeat:no-repeat;background-size:100%; height:100%">
+<div class="container mt-2">
+	<div class=" card col-md mt-2 mx-auto shadow-lg">
 		<div class="card-body">
 				<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
-				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Worker Details</h3>
+				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded"style="font-family:Garamond;font-weight:bold;">Worker Details</h3>
 				<!-- <table>
 				<tr>{{w.as_p}}</tr>
 			   </table> -->

@@ -2,26 +2,27 @@
 {% extends 'html/base.html' %}
 {% block title %}Child Details{% endblock %}
 {% block content %}
+<div class="bg-image"
+  style="background-image:url('https://thumbs.dreamstime.com/b/website-contact-page-concept-internet-icons-colorful-hanged-tags-isolated-white-background-32247395.jpg');background-size:40%;height:100%">
 <div class="container mt-4">
-	<div class="card col-md-10 mt-2 mx-auto shadow-lg">
-		<div class="card-body">
-			<h3 class="text-center">CONTACT US <i class='fas fa-phone'></i><hr></h3>
-			<h5 class="text-center text-info"><i class='fas fa-heart' style='color:pink'></i> WE’D LOVE TO HEAR FROM YOU <i class='fas fa-heart' style='color:pink'></i></h5>
-				<h6 class="text-center text-info">We welcome your comments, suggestions and feedback. You can contact the customer services team via email & phone, and we will attempt to handle your enquiry promptly. If they cannot help immediately or they are not the right person to talk to, they will transfer you to a more appropriate contact.Call us, email us, or just fill out this form.<br>We'll respond to you at our earliest convenience <i class='far fa-smile' style='color:pink'></i></h6><hr>
+<div class=" card col-md-10 mt-2 mx-auto shadow-lg bg-image"
+  style="background-image:url('https://wallpapercave.com/wp/wp3088645.jpg');background-size:cover;height:100%">
+			<h3 class="text-center" style="font-family:Garamond;font-weight:bold;">CONTACT US <i class='fas fa-phone'></i><hr></h3>
+			<h5 class="text-center text-danger" style="font-family:Garamond;font-weight:bold;">WE’D LOVE TO HEAR FROM YOU <i class='far fa-grin-beam'></i></h5>
+				<h6 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;font-size: 22px">We welcome your comments, suggestions and feedback. You can contact the customer services team via email & phone, and we will attempt to handle your enquiry promptly. If they cannot help immediately or they are not the right person to talk to, they will transfer you to a more appropriate contact.Call us, email us, or just fill out this form.<br>We'll respond to you at our earliest convenience <i class='far fa-smile' style='color:black'></i></h6><hr>
 				<div class="mx-auto col-md-5 ">
 				<form method="POST" enctype="multipart/form-data">
-				<h4 class="text-center text-success">Put your Enquiry here :) <i class='fas fa-comments' style='color:green'></i></h4>
+				<h4 class="text-center text-success" style="font-family:Garamond;font-weight:bold;">Put your Enquiry here :) <i class='fas fa-comments' style='color:green'></i></h4>
 				{% csrf_token %}
-    			<i class="fa fa-user icon"></i>
-				<input type="text" name="uname" placeholder="Enter Username" class="form-control my-2" value="{{request.user.username}}" readonly >
-				<input type="email" name="email" placeholder="Enter your Mail ID" class="form-control my-2">
-				<textarea class="form-control my-2" cols="10" rows="5" placeholder="Leave us a message" name="msg"></textarea>
+				<input type="text" name="uname" placeholder="Enter Username" class="form-control-plaintext my-2" value="{{request.user.username}}" readonly >
+				<input type="email" name="email" placeholder="Enter your Mail ID" class="form-control-plaintext my-2">
+				<textarea class="form-control-plaintext my-2" cols="10" rows="5" placeholder="Leave us a message" name="msg"></textarea>
 				<div class="row">
 					<div class="col">
-					<input type="reset" name="Reset" class="btn btn-outline-danger col-sm">
+					<input type="reset" name="Reset" class="btn btn-danger col-sm">
 					</div>
 					<div class="col">
-					<input type="submit" value="Submit" class="btn btn-outline-success col-sm">
+					<input type="submit" value="Submit" class="btn btn-info col-sm">
 					</div>
                 </div>
 			</form>

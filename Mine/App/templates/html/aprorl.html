@@ -1,10 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Approve Roles{% endblock %}
 {% block content %}
-<div class="container mt-4">
-	<div class="card col-md-6 mx-auto shadow-lg">
+<div class="bg-image"
+	style="background-image:url('https://wallpapercave.com/wp/wp6938507.jpg');background-repeat:no-repeat;background-size:100%; height:100%">
+<div class="container mt-2">
+	<div class="col-md-6 mx-auto shadow-lg">
 		<div class="card-body">
-			<h3>Approve Roles</h3>
+			<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Approve Roles Here...</h3>
 			<form method="post">
 				{% csrf_token %}
 				{% for c in a %}
@@ -12,10 +15,10 @@
 				{% endfor %}
 				<div class="row">
 					<div class="col">
-						<a href="{% url 'gv' %}" class="btn btn-outline-warning my-2 col-sm">Cancel</a>
+						<a href="{% url 'gv' %}" class="btn btn-warning my-2 col-sm">Cancel</a>
 					</div>
 					<div class="col">
-						<input type="submit" value="Give Role" class="btn btn-outline-success my-2 col-sm">
+						<input type="submit" value="Give Role" class="btn btn-success my-2 col-sm">
 					</div>
 				</div>
 			</form>

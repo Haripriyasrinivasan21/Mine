@@ -8,13 +8,13 @@
 		<div class="card col-md mt-2 shadow-lg">
 			<div class="card-body">
 				<table class="table table-borderless table-center">
-					<tr class="bg-dark text-light text-center">
+					<tr class="bg-dark text-light">
 						<th>S.no</th>
 						<th>Organisation Name</th>
+                                    <!-- <th>Orgganisation Email</th> -->
 						<th>Founder Name</th>
 						<th>Established On</th>
 						<th>No.of Childrens</th>
-						<th>Actions</th>
 					</tr>
             		{% for i in q %}
             		<tr>
@@ -23,10 +23,10 @@
             			<td>{{i.found_name}}</td>
             			<td>{{i.est_date}}</td>
             			<td>{{i.no_of_childrens}}</td>
-            			<td colspan="3">
+            			<!-- <td colspan="3">
             				<a href="{% url 'don' %}" class="btn btn-outline-info my-2">Donate</a>
                                     <a href="{% url 'join' %}" class="btn btn-outline-success my-2">JoinUs</a><br>
-                              </td>
+                              </td> -->
             		</tr>
             		{% endfor %}
             	</table>

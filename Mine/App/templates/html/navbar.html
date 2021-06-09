@@ -1,12 +1,14 @@
 {% load static %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<link href='https://fonts.googleapis.com/css?family=Mada' rel='stylesheet'>
+<nav class="navbar navbar-expand-md navbar-light" style="background-color:#FF1493;">
   <img src="{% static 'images/gif.gif' %}" alt="logo" style="width:100px;height:50px">
   <!-- <a class="navbar-brand" href="{% url 'hm' %}"> Children Welfare
 </a> -->
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div style="font-family:Garamond;font-weight:bold;font-size: 120%;">
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       {% if not user.is_authenticated %}
@@ -17,7 +19,7 @@
         <a class="nav-link" href="{% url 'rg' %}"><i class='fas fa-user-plus'></i> Register Here</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'lg' %}"><i class="fas fa-address-card"></i> Login</a>
+        <a class="nav-link disabled" href="{% url 'lg' %}"><i class="fas fa-address-card"></i> Login</a>
       </li>
       {% elif user.is_superuser %}
       <li class="nav-item">
@@ -36,16 +38,16 @@
 </li>
       {% elif user.role == 1 %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'aus' %}"><i class='fas fa-home'></i>About Organisations</a>
+        <a class="nav-link" href="{% url 'aus' %}"><i class='fas fa-home'></i> About Organisations</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'mn' %}"><i class='fas fa-gift'></i>Donations</a>
+        <a class="nav-link" href="{% url 'mn' %}"><i class='fas fa-gift'></i> Donations</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'don' %}"><i class="fas fa-hand-holding-heart"></i>Donate</a>
+        <a class="nav-link" href="{% url 'don' %}"><i class="fas fa-hand-holding-heart"></i> Donate</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'join' %}"><i class="fas fa-hands-helping"></i>Join Us</a>
+        <a class="nav-link" href="{% url 'join' %}"><i class="fas fa-hands-helping"></i> Join Us</a>
       <li class="dropdown">
        <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-address-book"></i>{{user.username}}</a>
   <div class="dropdown-menu">
@@ -82,9 +84,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'mn' %}">Main</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="{% url 'dash' %}">Dashboard</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="{% url 'rq' %}">Service Request</a>
       </li> 
@@ -98,5 +100,6 @@
 </li>
       {% endif %}  
     </ul>
-  </div>  
+  </div> 
+  </div> 
 </nav>

@@ -25,47 +25,47 @@ class PrfUpd(forms.ModelForm):
 		fields = ["username","email","dob","gender","ph_no","pan_no","address","city","postal_code","state","country","img"]
 		widgets = {
 		"username":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"readOnly":True,
 			}),
 		"email":forms.EmailInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		"dob":forms.DateInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"type":"date",
 			"placeholder":"select Your Date of Birth",
 			}),
 		"gender":forms.Select(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		"ph_no":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update Phone number",
 			}),
 		"pan_no":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update Pan Number",
 			}),
 		"address":forms.Textarea(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update Address",
 			"rows":5,
 			}),
 		"city":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update City",
 			}),
 		"state":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update State",
 			}),
 		"postal_code":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update Postal Code",
 			}),
 		"country":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Update Country",
 			}),
 		}
@@ -76,14 +76,14 @@ class RolerqForm(forms.ModelForm):
 		fields = ["uname","roltype","random_id"]
 		widgets = {
 		"uname":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"readOnly":True,
 			}),
 		"roltype":forms.Select(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		"random_id":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"placeholder":"Enter the id received in ur mail",
 			}),
 		}
@@ -94,11 +94,11 @@ class GvForm(forms.ModelForm):
 		fields = ["username","role"]
 		widgets = {
 		"username":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"readOnly":True,
 			}),
 		"role":forms.Select(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		}
 class OrgForm(forms.ModelForm):
@@ -107,17 +107,17 @@ class OrgForm(forms.ModelForm):
 		fields = ["org_name","found_name","est_date","no_of_childrens"]
 		widgets = {
 		"org_name":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		"found_name":forms.TextInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			}),
 		"est_date":forms.DateInput(attrs={
-			"class":"form-control my-2",
+			"class":"form-control-plaintext my-2",
 			"type":"date",
 			}),
 		"no_of_childrens":forms.NumberInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			}),
 		}
 
@@ -127,17 +127,17 @@ class DonateForm(forms.ModelForm):
 		fields=["ways_to_donate","donating_to","sponsor_way","donating_date"]
 		widgets={
 		"ways_to_donate":forms.Select(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			}),
 		"donating_to":forms.TextInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"placeholder":"Organisation Name",
 			}),
 		"sponsor_way":forms.Select(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			}),
 		"donating_date":forms.DateInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"placeholder":"Enter the date of donation",
 			}),
 		}
@@ -148,21 +148,21 @@ class OccDonateForm(forms.ModelForm):
 		fields=["occ_name","donating_to","sponsor_way","donating_on"]
 		widgets={
 		"occ_name":forms.TextInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"placeholder":"Occasion Name",
 			"required":True,
 			}),
 		"donating_to":forms.TextInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"placeholder":"Organisation Name",
 			"required":True,
 			}),
 		"sponsor_way":forms.Select(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"required":True,
 			}),
 		"donating_on":forms.DateInput(attrs={
-			"class":"form-control",
+			"class":"form-control-plaintext",
 			"placeholder":"Enter the date of donation",
 			"required":True,
 			}),
@@ -287,15 +287,15 @@ class Donorinfoform(forms.ModelForm):
 
 class ChpasForm(PasswordChangeForm):
 	old_password=forms.CharField(widget=forms.PasswordInput(attrs={
-		"class":"form-control",
+		"class":"form-control-plaintext",
 		"placeholder":"Enter Old password"
 		}))
 	new_password1=forms.CharField(widget=forms.PasswordInput(attrs={
-		"class":"form-control",
+		"class":"form-control-plaintext",
 		"placeholder":"Enter New password"
 		}))
 	new_password2=forms.CharField(widget=forms.PasswordInput(attrs={
-		"class":"form-control",
+		"class":"form-control-plaintext",
 		"placeholder":"Confirm New password"
 		}))
 

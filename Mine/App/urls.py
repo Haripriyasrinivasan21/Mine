@@ -50,5 +50,4 @@ urlpatterns = [
     path('worview/<int:wv>/',views.workerview,name="worv"),
     path('cont/',views.contactus,name="con"),
     path('abus/',views.aboutus,name="aus"),
-
 ]

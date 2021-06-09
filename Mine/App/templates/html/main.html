@@ -3,20 +3,22 @@
 {% block title %}Main Page{% endblock %}
 {% block content %}
 <div class="bg-image"
-	style="background-image:url('https://wallpapercave.com/wp/wp2634942.jpg');background-repeat:no-repeat;background-size:100%;">
-<div class="container mt-2">
-	<div class="jumbotron">
+	style="background-image:url('https://wallpapercave.com/wp/wp2634944.png');background-repeat:no-repeat;background-size:100%; height:100%">
+<div class="container mt-4">
 		{% if user.is_superuser %}
 		<h3>Super User</h3>
 		{% elif user.role == 1 %}
-		<h3>Hi {{user.username}} Donor, Here are your Donations... :)</h3>
-		<h4>Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4>
+		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Hi {{user.username}} Donor, Here are your Donations... :)</h3>
+		<h4 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4><br>
 		{% elif user.role == 2 %}
-		<h3>Organiser</h3>
+		<h3>Welcome Organiser</h3>
+		<h5>View Full Details By Clicking...
+			<a href="{% url 'ct' %}">Children's Details.. :) </a> and 
+			<a href="{% url 'wt' %}"> Worker's Details.. :)</a></h5>
 		{% else %}
-		<h3>Guest</h3>
+		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Welcome {{user.username}}, Know the information of the Donations <a href="{% url 'info' %}">By Clicking Here.. :)</a></h3>
+		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">You are in the Guest Mode... Request your needed Role to avail Services :)</h3>
 		{% endif %}
-	</div>
 		{% if user.role == 1 %}
 	<div class="row">
 			{% for j in h %}
