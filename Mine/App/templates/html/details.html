@@ -15,6 +15,7 @@
 						<th>Founder Name</th>
 						<th>Established On</th>
 						<th>No.of Childrens</th>
+
 					</tr>
             		{% for i in q %}
             		<tr>
@@ -24,7 +25,8 @@
             			<td>{{i.est_date}}</td>
             			<td>{{i.no_of_childrens}}</td>
             			<!-- <td colspan="3">
-            				<a href="{% url 'don' %}" class="btn btn-outline-info my-2">Donate</a>
+            				<a href="{% url 'don' %}" class="btn btn-outline-info my-2"> Periodical Donate</a>
+                                    <a href="{% url 'don' %}" class="btn btn-outline-info my-2"> Occasional Donate</a>
                                     <a href="{% url 'join' %}" class="btn btn-outline-success my-2">JoinUs</a><br>
                               </td> -->
             		</tr>

@@ -32,8 +32,8 @@ def register(request):
 def mainpage(request):
 	h=Donate.objects.filter(uid_id=request.user.id)
 	o=OccDonate.objects.filter(uid_id=request.user.id)
-	return render(request,'html/main.html',{'h':h,'o':o})
-
+	ru=User.objects.all()
+	return render(request,'html/main.html',{'h':h,'o':o,'ru':ru})
 
 def visible(request):
 	t = Orgdetails.objects.get(us_id=request.user.id)

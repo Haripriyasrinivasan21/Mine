@@ -6,7 +6,26 @@
 	style="background-image:url('https://wallpapercave.com/wp/wp2634944.png');background-repeat:no-repeat;background-size:100%; height:100%">
 <div class="container mt-4">
 		{% if user.is_superuser %}
-		<h3>Super User</h3>
+		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Welcome Admin</h3>
+		<div class="col-md-8 mx-auto">
+		<div class="card-body">
+			<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Here are the Registered Users till now...</h3>
+			<table class="table table-borderless">
+				<tr class="bg-info text-light">
+					<th class="text-center" style="font-family:Garamond;font-weight:bold;">S.No</th>
+					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Username</th>
+					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Email id</th>
+				</tr>
+				{% for i in ru %}
+            		<tr>
+            			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{forloop.counter}}.</td>
+            			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.username}}</td>
+            			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.email}}</td>
+            		</tr>
+            	{% endfor %}
+            </table>
+        </div>
+    </div>
 		{% elif user.role == 1 %}
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Hi {{user.username}} Donor, Here are your Donations... :)</h3>
 		<h4 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4><br>

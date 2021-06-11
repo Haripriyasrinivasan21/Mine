@@ -107,17 +107,17 @@ class OrgForm(forms.ModelForm):
 		fields = ["org_name","found_name","est_date","no_of_childrens"]
 		widgets = {
 		"org_name":forms.TextInput(attrs={
-			"class":"form-control-plaintext my-2",
+			"class":"form-control my-2",
 			}),
 		"found_name":forms.TextInput(attrs={
-			"class":"form-control-plaintext my-2",
+			"class":"form-control my-2",
 			}),
 		"est_date":forms.DateInput(attrs={
-			"class":"form-control-plaintext my-2",
+			"class":"form-control my-2",
 			"type":"date",
 			}),
 		"no_of_childrens":forms.NumberInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control",
 			}),
 		}
 
