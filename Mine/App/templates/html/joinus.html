@@ -16,8 +16,9 @@
 				{% csrf_token %}
 				<input type="text" name="uname" placeholder="Enter Username" class="form-control my-2" value="{{request.user.username}}" readonly>
 				<input type="email" name="email" placeholder="Enter your Mail ID" class="form-control my-2" value="{{request.user.email}}">
-				<input type="Number" name="ph" placeholder="Enter your Phone Number" class="form-control my-2">
-				<input type="text" name="oname" placeholder="Enter the organisation name which your wanna join..!" class="form-control my-2">
+				<input type="Number" name="ph" placeholder="Enter your Phone Number" class="form-control my-2" value="{{request.user.ph_no}}">
+				<input type="text" name="oname" placeholder="Enter the organisation name which your wanna join.." class="form-control my-2">
+				<input type="email" name="oemail" placeholder="Enter the organisation email which your wanna join..!" class="form-control my-2">
 				<textarea class="form-control my-2" cols="10" rows="5" placeholder="Leave us a message" name="msg"></textarea>
 				<div class="row">
 					<div class="col">

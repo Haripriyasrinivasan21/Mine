@@ -4,7 +4,7 @@ from django.contrib.auth import views as v
 
 urlpatterns = [
 	path('',views.home,name="hm"),
-	path('lgi/',v.LoginView.as_view(template_name="html/login.html"),name="lg"),
+	path('lgi/',views.Login_valid,name="lg"),
 	path('lgo/',v.LogoutView.as_view(template_name="html/logout.html"),name="lgt"),
 	path('main/',views.mainpage,name="mn"),
 	path('reg/',views.register,name="rg"),
@@ -50,4 +50,10 @@ urlpatterns = [
     path('worview/<int:wv>/',views.workerview,name="worv"),
     path('cont/',views.contactus,name="con"),
     path('abus/',views.aboutus,name="aus"),
+    path('paydon/<int:pd>/',views.paymentdon,name="payd"),
+    path('payocc/<int:po>/',views.paymentocc,name="payo"),
+    path('orgtab1/',views.orgtable1,name="otab1"),
+    path('orgtab2/',views.orgtable2,name="otab2"),
+    path('feed/',views.feedback,name="fb"),
+    path('tq/',views.thankyou,name="thq"),
 ]

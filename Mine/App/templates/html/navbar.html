@@ -1,10 +1,11 @@
 {% load static %}
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href='https://fonts.googleapis.com/css?family=Mada' rel='stylesheet'>
 <nav class="navbar navbar-expand-md navbar-light" style="background-color:#FF1493;">
-  <img src="{% static 'images/gif.gif' %}" alt="logo" style="width:100px;height:50px">
-  <!-- <a class="navbar-brand" href="{% url 'hm' %}"> Children Welfare
-</a> -->
+ 
+  <a class="navbar-brand" href="{% url 'hm' %}"> <img src="{% static 'images/gif.gif' %}" alt="logo" style="width:100px;height:50px">
+</a>
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,11 +30,14 @@
         <a class="nav-link" href="{% url 'gv' %}">Permissions</a>
       </li>
       <li class="dropdown">
-       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{request.user.img.url}}" height="33px" width="35px" class="rounded-circle" />{{user.username}}</a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
-    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
-    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+    <a class="dropdown-item" href="{% url 'pf' %}"><i class="fa fa-user" aria-hidden="true"></i>
+Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}"><i class="fa fa-key" aria-hidden="true"></i>
+Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
   </div>
 </li>
       {% elif user.role == 1 %}
@@ -48,12 +52,19 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'join' %}"><i class="fas fa-hands-helping"></i> Join Us</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="{% url 'fb' %}"><i class='far fa-grin-stars'></i> Feedback</a>
+      </li>
       <li class="dropdown">
-       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-address-book"></i>{{user.username}}</a>
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{request.user.img.url}}" height="33px" width="35px" class="rounded-circle" />   {{user.username}}</a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
-    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
-    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+    <a class="dropdown-item" href="{% url 'pf' %}"><i class="fa fa-user" aria-hidden="true"></i>
+Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}"><i class="fa fa-key" aria-hidden="true"></i>
+Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
   </div>
 </li>
 {% elif user.role == 2 %}
@@ -72,12 +83,17 @@
       <li class="nav-item">
         <a class="nav-link" href="{% url 'di' %}"><i class='fas fa-user-edit'></i> Add Donor Info</a>
       </li>
+      <li class="nav-item">
+      <a class="nav-link" href="{% url 'fb' %}"><i class='far fa-grin-stars'></i> Feedback</a>
+      </li>
       <li class="dropdown">
-       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{request.user.img.url}}" height="33px" width="35px" class="rounded-circle" />{{user.username}}</a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
-    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
-    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+    <a class="dropdown-item" href="{% url 'pf' %}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}"><i class="fa fa-key" aria-hidden="true"></i>
+Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
   </div>
 </li>
       {% else %}
@@ -91,15 +107,20 @@
         <a class="nav-link" href="{% url 'rq' %}">Service Request</a>
       </li> 
       <li class="dropdown">
-       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown">{{user.username}}</a>
+       <a type="button" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{request.user.img.url}}" height="33px" width="35px" class="rounded-circle" />{{user.username}}</a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="{% url 'pf' %}">Profile</a>
-    <a class="dropdown-item" href="{% url 'chpas' %}">Change Password</a>
-    <a class="dropdown-item" href="{% url 'lgt' %}">Logout</a>
+    <a class="dropdown-item" href="{% url 'pf' %}"><i class="fa fa-user" aria-hidden="true"></i>Profile</a>
+    <a class="dropdown-item" href="{% url 'chpas' %}"><i class="fa fa-key" aria-hidden="true"></i>
+Change Password</a>
+    <a class="dropdown-item" href="{% url 'lgt' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
+Logout</a>
   </div>
 </li>
+<li class="nav-item">
+      <a class="nav-link" href="{% url 'fb' %}"><i class='far fa-grin-stars'></i> Feedback</a>
+</li>
       {% endif %}  
-    </ul>
+  </ul>
   </div> 
   </div> 
 </nav>

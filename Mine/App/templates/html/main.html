@@ -2,6 +2,14 @@
 {% extends 'html/base.html' %}
 {% block title %}Main Page{% endblock %}
 {% block content %}
+{% if messages %}
+  {% for j in messages %}
+  <div class="alert alert-{{j.tags}} alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button><img src="{{request.user.img.url}}" class="rounded-circle" height="40px" width="50px"/>
+  {{j}}
+</div>
+  {% endfor %}
+{% endif %}
 <div class="bg-image"
 	style="background-image:url('https://wallpapercave.com/wp/wp2634944.png');background-repeat:no-repeat;background-size:100%; height:100%">
 <div class="container mt-4">
@@ -77,9 +85,10 @@
 	<div class="card my-2">
 	<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:150px;width:100%">
 	<div class="card-body">
+		<h5 class="text-danger">Periodically Donating</h5>
 		<h5>Donated By : {{j.username}}</h5>
 		<h5>Donated to: {{j.donating_to}}</h5>
-		<a href="#" class="btn btn-secondary form-control">View</a>
+		<a href="{% url 'otab1' %}" class="btn btn-secondary form-control">View</a>
 	</div>
 </div>
 </div>
@@ -89,9 +98,10 @@
 	<div class="card my-2">
 	<img class="card-img-top" src="{{user.img.url}}" alt="Card image" style="height:150px;width:100%">
 	<div class="card-body">
+		<h5 class="text-warning">Occassionally Donating</h5>
 		<h5>Donated By : {{i.username}}</h5>
 		<h5>Donated to: {{i.donating_to}}</h5>
-		<a href="#" class="btn btn-secondary form-control">View</a>
+		<a href="{% url 'otab2' %}" class="btn btn-secondary form-control">View</a>
 	</div>
 </div>
 </div>

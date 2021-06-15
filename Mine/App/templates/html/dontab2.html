@@ -18,18 +18,18 @@
 					</tr>
             		{% for j in h %}
             		<tr>
-            			<td>{{forloop.counter}}.</td>
-            			<td>{{j.username}}</td>
-            			<td>{{j.donating_way}}</td>
-            			<td>{{j.occ_name}}</td>
-            			<td>{{j.donating_to}}</td>
-            			<td>{{j.sponsor_way}}</td>
-            			<td>{{j.donating_on}}</td>
-            			<td colspan="3">
+            			<td class="text-center">{{forloop.counter}}.</td>
+            			<td class="text-center">{{j.username}}</td>
+            			<td class="text-center">{{j.donating_way}}</td>
+            			<td class="text-center">{{j.occ_name}}</td>
+            			<td class="text-center">{{j.donating_to}}</td>
+            			<td class="text-center">{{j.sponsor_way}}</td>
+            			<td class="text-center">{{j.donating_on}}</td>
+            			<td colspan="3" class="text-center">
             				<a href="{% url 'occdet' j.id %}" class="btn btn-outline-success mx-1 my-1 text-success">Update</a><br>
-            				<a href="{% url 'odel' j.id %}" class="btn btn-outline-danger mx-1 my-1 text-danger">Delete</a><br>
+            				<a href="{% url 'odel' j.id %}" class="btn btn-outline-danger mx-1 my-1 ">Delete</a><br>
             				{% if j.sponsor_way == 'Money' %}
-		    				<a href="" class="btn btn-outline-info text-info my-1 mx-1">Proceed</a>
+		    				<a href="{% url 'payo' j.id %}" class="btn btn-outline-info text-info my-1 mx-1">Proceed</a>
             				{% elif j.sponsor_way == 'Food' %}
 		    				<a href="{% url 'occmsg' j.id %}" class="btn btn-outline-info mx-1 my-1 text-info ">Proceed</a>
 		    				{% elif j.sponsor_way == 'Clothes' %}
@@ -37,6 +37,7 @@
 		    				{% else %}
 		    				<a href="#" class="btn btn-secondary">None</a>
 		    				{% endif %}
+		    				<br><a href="{% url 'mn' %}" class="btn btn-outline-warning mx-1 my-1">Back to main</a>
             			</td>
             		</tr>
             		{% endfor %}

@@ -5,7 +5,7 @@
 		<div class="row">
 				<div class="card col-md-4 mt-2 shadow-lg">
 				<div class="card-body">
-				<form method="POST">
+				<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Donor Info</h3>
 				<table>
@@ -32,6 +32,7 @@
 						<th>Donated Value</th>
 						<th>Donated on</th>
 						<th>Used for</th>
+						<th>Receipts</th>
 						<th>Actions</th>
 					</tr>
             		{% for k in n %}
@@ -42,6 +43,7 @@
             			<td>{{k.donated_thing}}</td>
             			<td>{{k.donated_on}}</td>
             			<td>{{k.used_for}}</td>
+            			<td>{{k.rep}}</td>
             			<td colspan="3">
             				<a href="{% url 'diup' k.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
             				<a href="{% url 'dondel' k.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>

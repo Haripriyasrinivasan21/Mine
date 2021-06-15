@@ -1,0 +1,41 @@
+{% extends 'html/base.html' %}
+{% block title %}Donation Infomation {% endblock %}
+{% block content %}
+<div class="container-fluid mt-2">
+	<div class="row">
+		<div class="card col-md mt-2 shadow-lg">
+			<div class="card-body">
+				<table class="table table-borderless table-center">
+					<tr class="bg-dark text-light text-center">
+						<th>S.no</th>
+						<th>Donation By</th>
+						<th>Donating Way</th>
+						<th>Occassion Name</th>
+						<th>Donating to</th>
+						<th>Sponsor Way</th>
+						<th>Donating On</th>
+						<th>Actions</th>
+					</tr>
+            		{% for j in i %}
+            		<tr>
+            			<td class="text-center">{{forloop.counter}}.</td>
+            			<td class="text-center">{{j.1}}</td>
+            			<td class="text-center">{{j.2}}</td>
+            			<td class="text-center">{{j.3}}</td>
+            			<td class="text-center">{{j.4}}</td>
+            			<td class="text-center">{{j.5}}</td>
+            			<td class="text-center">{{j.6}}</td>
+            			<td colspan="3" class="text-center">
+            				<!-- <a href="" class="btn btn-outline-success mx-1 my-1 text-success">Update</a><br> -->
+		    				<br><a href="{% url 'vi' %}" class="btn btn-outline-warning mx-1 my-1">Back to main</a>
+            			</td>
+            		</tr>
+            		{% endfor %}
+            	</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+{% endblock %}

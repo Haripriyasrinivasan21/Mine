@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href='https://fonts.googleapis.com/css?family=Mada' rel='stylesheet'>
 {% extends 'html/base.html' %}
-{% block title %} Home {% endblock %}
+{% block title %}Thankyou{% endblock %}
 {% block content %}
 <div class="bg-image"
-	style="background-image:url('images/po.jpg');background-repeat:no-repeat;background-size:100% ;height:100%">	
-		<h2 class="text-center text-success" style="font-family:Garamond;font-weight:bold;">A Warm Welcome to our group and all our good wishes :)</h2> 
-		<h3 class="text-success text-center" style="font-family:Garamond;font-weight:bold;">We Hope for a long and successful journey with you :)</h3>
-		<h3 class="text-center text-success" style="font-family:Garamond;font-weight:bold;">Register to avail our services :)</h3><br>
-
+	style="background-image:url('https://wallpapercave.com/wp/wp2634946.jpg');background-repeat:no-repeat;background-size:100%; height:130%">
+<div class="container mt-1">
+	<h4 class="text-center" style="font-family:Garamond;font-weight:bold;">Dear {{user.username}},</h4>
+	<h4 class="text-center" style="font-family:Garamond;font-weight:bold;"> Thank you for spending your valuable time on our Website...</h4>
+	<h4 class="text-center" style="font-family:Garamond;font-weight:bold;">We are Happy to have you with us :) Have a good time ahead...!!</h4><br>
+</div>
 <div class="container" style="align-content: center;">
 <div class="row">
 

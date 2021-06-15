@@ -27,6 +27,7 @@ class Rolrq(models.Model):
 
 class Orgdetails(models.Model):
 	org_name=models.CharField(max_length=50,default="Organisation Name")
+	org_email=models.EmailField(max_length=50)
 	found_name=models.CharField(max_length=50,default="Founder Name")
 	est_date=models.DateField(null=True)
 	no_of_childrens=models.IntegerField(default=0)
@@ -89,5 +90,6 @@ class Donor_info(models.Model):
 	donated_thing = models.CharField(max_length=100)
 	donated_on = models.DateField(null=True)
 	used_for = models.CharField(max_length=200)
+	rep= models.ImageField(upload_to='Receipts/',default="receipt.png")
 	don = models.ForeignKey(User,on_delete=models.CASCADE)
 

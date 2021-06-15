@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'html/base.html' %}
+{% block title %}Payment Details{% endblock %}
+{% block content %}
+<div class="bg-image"
+  style="background-image:url('https://wallpapercave.com/wp/wp7094558.jpg');background-size:100%;height:200%">
+<div class="container">
+	<div class="card col-md-6 mx-auto bg-image" style="background-image:url('https://wallpapercave.com/wp/wp6230160.png');background-size:100%;height:100%">
+		<div class="card-body col-md-10 mx-auto">
+			<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Periodical Payment details</h3>
+			<form method="POST">
+				{% csrf_token %}
+				{% for i in p %}
+				<tr>
+					<td>{{i}}</td>
+				</tr>
+				{% endfor %}
+			</form>
+			<input type="number" name="amount"  style="font-family:Garamond;font-weight:bold;" class="form-control" placeholder="Total Amount">
+            <textarea rows="4" cols="30" name="ms" placeholder="Here..You can also tell us the way, that you want us to make use of the money :)" style="font-family:Garamond;font-weight:bold;" class="form-control my-2"></textarea>
+		
+
+<head>
+    <!-- Add meta tags for mobile and IE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+
+    <style>
+        /* Media query for mobile viewport */
+        @media screen and (max-width: 400px) {
+            #paypal-button-container {
+                width: 100%;
+            }
+        }
+        
+        /* Media query for desktop viewport */
+        @media screen and (min-width: 400px) {
+            #paypal-button-container {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AZK-LyPPBI87QiQ_1WFKhrJBKRXsPWCE-pLw7z4bl8rHlGjzWCsa176Gya7F0Rcg7MsD97Z9lilNxyUY&currency=USD"></script>
+
+    <!-- <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons().render('#paypal-button-container');
+    </script> -->
+    <script>
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            style: {
+                color:  'blue',
+                shape:  'rect',
+                label:  'pay',
+                height: 40
+            }
+
+        }).render('#paypal-button-container');
+    </script>
+</body>
+
+</div>
+    </div>
+</div>
+
+{% endblock %}
+
+<!-- https://wallpapercave.com/wp/wp7094558.jpg -->
+<!-- https://wallpapercave.com/wp/wp7094546.jpg -->
+<!-- https://wallpapercave.com/wp/wp6230160.png -->

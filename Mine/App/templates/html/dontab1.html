@@ -29,7 +29,7 @@
             				<a href="{% url 'up' k.id %}" class="btn btn-outline-success mx-1 text-success">Update</a>
             				<a href="{% url 'dele' k.id %}" class="btn btn-outline-danger mx-1 text-danger">Delete</a>
             				{% if k.sponsor_way == 'Money' %}
-		    				<a href="" class="btn btn-outline-info text-info mx-1">Proceed</a>
+		    				<a href="{% url 'payd' k.id %}" class="btn btn-outline-info text-info mx-1">Proceed</a>
             				{% elif k.sponsor_way == 'Food' %}
 		    				<a href="{% url 'msg' k.id %}" class="btn btn-outline-info mx-1 text-info ">Proceed</a>
 		    				{% elif k.sponsor_way == 'Clothes' %}
@@ -37,6 +37,7 @@
 		    				{% else %}
 		    				<a href="#" class="btn btn-secondary">None</a>
 		    				{% endif %}
+		    				<a href="{% url 'mn' %}" class="btn btn-outline-warning mx-1 my-1">Back to main</a>
             			</td>
             		</tr>
             		{% endfor %}

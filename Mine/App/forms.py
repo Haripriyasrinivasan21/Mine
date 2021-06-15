@@ -104,10 +104,14 @@ class GvForm(forms.ModelForm):
 class OrgForm(forms.ModelForm):
 	class Meta:
 		model = Orgdetails
-		fields = ["org_name","found_name","est_date","no_of_childrens"]
+		fields = ["org_name","org_email","found_name","est_date","no_of_childrens"]
 		widgets = {
 		"org_name":forms.TextInput(attrs={
 			"class":"form-control my-2",
+			}),
+		"org_email":forms.EmailInput(attrs={
+			"class":"form-control my-2",
+			"placeholder":"Enter the Organisation Email",
 			}),
 		"found_name":forms.TextInput(attrs={
 			"class":"form-control my-2",
@@ -127,17 +131,17 @@ class DonateForm(forms.ModelForm):
 		fields=["ways_to_donate","donating_to","sponsor_way","donating_date"]
 		widgets={
 		"ways_to_donate":forms.Select(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			}),
 		"donating_to":forms.TextInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"placeholder":"Organisation Name",
 			}),
 		"sponsor_way":forms.Select(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			}),
 		"donating_date":forms.DateInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"placeholder":"Enter the date of donation",
 			}),
 		}
@@ -148,21 +152,21 @@ class OccDonateForm(forms.ModelForm):
 		fields=["occ_name","donating_to","sponsor_way","donating_on"]
 		widgets={
 		"occ_name":forms.TextInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"placeholder":"Occasion Name",
 			"required":True,
 			}),
 		"donating_to":forms.TextInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"placeholder":"Organisation Name",
 			"required":True,
 			}),
 		"sponsor_way":forms.Select(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"required":True,
 			}),
 		"donating_on":forms.DateInput(attrs={
-			"class":"form-control-plaintext",
+			"class":"form-control my-2",
 			"placeholder":"Enter the date of donation",
 			"required":True,
 			}),
@@ -261,7 +265,7 @@ class Workerform(forms.ModelForm):
 class Donorinfoform(forms.ModelForm):
 	class Meta:
 		model = Donor_info
-		fields = ["donor_name","donor_email","donated_thing","donated_on","used_for"]
+		fields = ["donor_name","donor_email","donated_thing","donated_on","used_for","rep"]
 		widgets = {
 		"donor_name":forms.TextInput(attrs={
 			"class":"form-control",
@@ -282,6 +286,9 @@ class Donorinfoform(forms.ModelForm):
 		"used_for":forms.TextInput(attrs={
 			"class":"form-control",
 			"placeholder":"Enter the usage",
+			}),
+		"rep":forms.FileInput(attrs={
+			"class":"form-control",
 			}),
 		}
 

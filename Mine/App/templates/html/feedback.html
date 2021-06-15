@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'html/base.html' %}
+{% block title %}Feedback{% endblock %}
+{% block content %}
+<div class="bg-image"
+	style="background-image:url('https://wallpapercave.com/wp/wp2634944.png');background-repeat:no-repeat;background-size:100%; height:100%">
+<div class="container">
+	<div class="col-md-5 mx-auto mt-5 border rounded" style="background-color:#FFC0CB">
+		<div class="card-body">
+			<form method="POST">
+			<h4 class="text-info p-3 text-center border rounded" style="font-family:Garamond;font-weight:bold;">Give us your feedback here and suggest us to serve you better :)</h4>
+			{% csrf_token %}
+			<input type="text" name="uname" placeholder="Enter your Name" class="form-control-plaintext text-black my-2"style="font-family:Garamond;font-weight:bold;" value="{{request.user.username}}" readonly>
+			<input type="text" name="email" placeholder="Enter your Email" class="form-control-plaintext text-black my-2"style="font-family:Garamond;font-weight:bold;" value="{{request.user.email}}" readonly>
+			<h6 class="text-black" style="font-family:Garamond;font-weight:bold;">Rate our Service :)</h6><input class="star" type="checkbox"  id="st1" value="1" />
+			<label for="st1"></label>
+			<input class="star" type="checkbox" id="st2" value="2" />
+			<label for="st2"></label>
+			<input class="star" type="checkbox" id="st3" value="3" />
+			<label for="st3"></label>
+			<input class="star" type="checkbox" id="st4" value="4" />
+			<label for="st4"></label>
+			<input class="star" type="checkbox" id="st5" value="5" />
+			<label for="st5"></label>
+<style>
+	.star{
+	position: relative;
+ 	margin:7px;
+	}
+	.star {
+    visibility:hidden;
+    font-size:35px;
+    cursor:pointer;
+}
+.star:before {
+   content: "\2606";
+   position: absolute;
+   visibility:visible;
+   color: orange;
+}
+.star:checked:before {
+   content: "\2605";
+   position: absolute;
+   color:orange;
+}
+</style><br>
+<style>
+::placeholder {
+  color:black;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:black;
+}
+</style><br>
+			<textarea rows="4" cols="30" name="ms" placeholder="Provide us your suggestions and comments here..!!" style="font-family:Garamond;font-weight:bold;" class="form-control-plaintext my-2"></textarea>
+			<input type="submit" value="Submit" class="btn btn-outline-success col-sm">
+		</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+<!-- 
+https://wallpapercave.com/wp/wp2552710.jpg -->
+<!-- https://static.vecteezy.com/system/resources/thumbnails/001/361/537/small/pink-watercolor-background-free-vector.jpg -->
