@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% extends 'html/base.html' %}
+{% block title %}Pay Success{% endblock %}
+{% block content %}
+<div class="bg-image"
+    style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRk0f_Sp3RZAilWv9x6OV33XVFP3sp4o00Ld4iMgryIPrkGUVWp6Xe1PceuZo7QyL1L0s4&usqp=CAU');background-size:50%; height:100%">
+<div class="container mt-1">
+	<div class="card-md-5">
+	<div class="jumbotron mx-auto" style="height:350px; width:700px">
+		<h3 class="text-dark">Dear {{user.username}} ,</h3>
+    <h5 class="text-dark">Thank you for your generosity... We appreciate your support :)</h5>
+    <h5 class="text-dark">We will also send the details of your invoice to your mail ID...Your Donation is 100% TAX deductible..!!</h5>
+    <h5 class="text-dark">You will also receive a mail stating the usage of our donation along with your Receipt :)</h5>
+    <h5 class="text-dark">THANK YOU once again on... Have a good time ahead :)</h5>
+	</div>
+</div>
+</div>
+{% endblock %}

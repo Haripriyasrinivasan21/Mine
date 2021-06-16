@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
 from django import forms
-from App.models import User,Rolrq,Orgdetails,Donate,OccDonate,Child_details,Worker_details,Donor_info
+from App.models import User,Rolrq,Orgdetails,Donate,OccDonate,Child_details,Worker_details
 
 class UsrReg(UserCreationForm):
 	password1 = forms.CharField(widget=forms.PasswordInput(attrs={"class":"form-control-plaintext my-2","placeholder":"Password"}))
@@ -262,35 +262,35 @@ class Workerform(forms.ModelForm):
 			}),
 		}
 
-class Donorinfoform(forms.ModelForm):
-	class Meta:
-		model = Donor_info
-		fields = ["donor_name","donor_email","donated_thing","donated_on","used_for","rep"]
-		widgets = {
-		"donor_name":forms.TextInput(attrs={
-			"class":"form-control",
-			"placeholder":"Enter donor name",
-			}),
-		"donor_email":forms.EmailInput(attrs={
-			"class":"form-control",
-			"placeholder":"Enter donor's Email Id",
-			}),
-		"donated_thing":forms.TextInput(attrs={
-			"class":"form-control",
-			"placeholder":"Enter the donated value",
-			}),
-		"donated_on":forms.DateInput(attrs={
-			"class":"form-control",
-			"placeholder":"Enter the date of donation",
-			}),
-		"used_for":forms.TextInput(attrs={
-			"class":"form-control",
-			"placeholder":"Enter the usage",
-			}),
-		"rep":forms.FileInput(attrs={
-			"class":"form-control",
-			}),
-		}
+# class Donorinfoform(forms.ModelForm):
+# 	class Meta:
+# 		model = Donor_info
+# 		fields = ["donor_name","donor_email","donated_thing","donated_on","used_for","rep"]
+# 		widgets = {
+# 		"donor_name":forms.TextInput(attrs={
+# 			"class":"form-control",
+# 			"placeholder":"Enter donor name",
+# 			}),
+# 		"donor_email":forms.EmailInput(attrs={
+# 			"class":"form-control",
+# 			"placeholder":"Enter donor's Email Id",
+# 			}),
+# 		"donated_thing":forms.TextInput(attrs={
+# 			"class":"form-control",
+# 			"placeholder":"Enter the donated value",
+# 			}),
+# 		"donated_on":forms.DateInput(attrs={
+# 			"class":"form-control",
+# 			"placeholder":"Enter the date of donation",
+# 			}),
+# 		"used_for":forms.TextInput(attrs={
+# 			"class":"form-control",
+# 			"placeholder":"Enter the usage",
+# 			}),
+# 		"rep":forms.FileInput(attrs={
+# 			"class":"form-control",
+# 			}),
+# 		}
 
 class ChpasForm(PasswordChangeForm):
 	old_password=forms.CharField(widget=forms.PasswordInput(attrs={

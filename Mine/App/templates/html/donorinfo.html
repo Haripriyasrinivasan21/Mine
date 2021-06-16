@@ -1,15 +1,35 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Donor Info{% endblock %}
 {% block content %}
-<div class="container-fluid mt-2">
-		<div class="row">
-				<div class="card col-md-4 mt-2 shadow-lg">
+<div class="bg-image"
+	style="background-image:url('https://png.pngtree.com/thumb_back/fh260/background/20190223/ourmid/pngtree-cartoon-cute-childrens-day-background-design-day-backgroundholiday-backgroundchild-image_72045.jpg');background-repeat:no-repeat;background-size:100%; height:110%">
+
+<div class="container mt-2">
+		<!-- <div class="row"> -->
+				<div class=" col-md-5 mt-2 mx-auto shadow-lg">
 				<div class="card-body">
 				<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				<h3 class="my-2 block bg bg-info text-center text-white p-2 border rounded">Donor Info</h3>
 				<table>
-				<tr>{{d.as_p}}</tr>
+				<h6>Donor's Name:</h6>
+				<input type="text" name="uname" placeholder="Enter Donor name" class="form-control my-3">
+				<h6>Donor's Email ID:</h6>
+				<input type="text" name="email" placeholder="Enter Donor Email" class="form-control my-3">
+				<h6>Donated Value:</h6>
+				<select name="dtype" class="form-control my-3">
+				<option value="Select Donated Value">Select Donated Value</option>
+  				<option value="Food">Food</option>
+  				<option value="Money">Money</option>
+  				<option value="Clothes">Clothes</option>
+  				</select>
+  				<h6>Date of Donation:</h6>
+				<input type="date" name="ddate" placeholder="Select the Date of Donation" class="form-control my-3">
+				<h6>Usage of the Donation:</h6>
+				<input type="text" name="usage" placeholder="Enter the usage" class="form-control my-3">
+				<h6>Upload the Receipt:</h6>
+				<input type="file" name="fe" multiple class="form-control-file my-3">
 			   </table>
 				<div class="row">
 						<div class="col">
@@ -22,7 +42,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="card col-md mt-2 mx-2 shadow-lg">
+		<!-- <div class="card col-md mt-2 mx-2 shadow-lg">
 			<div class="card-body">
 				<table class="table table-borderless table-center">
 					<tr class="bg-dark text-light text-center">
@@ -45,14 +65,14 @@
             			<td>{{k.used_for}}</td>
             			<td>{{k.rep}}</td>
             			<td colspan="3">
-            				<a href="{% url 'diup' k.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
-            				<a href="{% url 'dondel' k.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+            				<a href="" class="btn btn-outline-success my-1 text-success">Update</a>
+            				<a href="" class="btn btn-outline-danger my-1 text-danger">Delete</a>
             			</td>
             		</tr>
             		{% endfor %}
             	</table>
 			</div>
-		</div>
-	</div>
+		</div> -->
+	<!-- </div> -->
 </div>
 {% endblock %}

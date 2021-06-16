@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
-from App.forms import UsrReg,PrfUpd,RolerqForm,GvForm,OrgForm,DonateForm,OccDonateForm,ChpasForm,Childform,Workerform,Donorinfoform
-from App.models import User,Rolrq,Orgdetails,Donate,OccDonate,Child_details,Worker_details,Donor_info
+from App.forms import UsrReg,PrfUpd,RolerqForm,GvForm,OrgForm,DonateForm,OccDonateForm,ChpasForm,Childform,Workerform
+from App.models import User,Rolrq,Orgdetails,Donate,OccDonate,Child_details,Worker_details
 from django.core.mail import send_mail
 from Hari import settings
 import secrets
@@ -42,13 +42,71 @@ def mainpage(request):
 	h=Donate.objects.filter(uid_id=request.user.id)
 	o=OccDonate.objects.filter(uid_id=request.user.id)
 	ru=User.objects.all()
-	return render(request,'html/main.html',{'h':h,'o':o,'ru':ru})
+	t = Orgdetails.objects.filter(us_id=request.user.id)
+	y = Donate.objects.all()
+	p = []
+	for b in y:
+		p.append(b.uid_id)
+	m = {}
+	for n in h:
+		if n.uid_id in p:
+			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
+	z = {}
+	tr = User.objects.all()
+	for j in tr:
+		for c in m.values():
+			if j.id == c[3]:
+				z[j.id]=c[1],c[2],j.img.url
+	rk = Orgdetails.objects.all()
+	p = []
+	for b in rk:
+		p.append(b.us_id)
+	m = {}
+	for n in t:
+		if n.us_id in p:
+			m[n.id] = n.id,n.org_name,n.us_id
+	x = {}
+	tr = User.objects.all()
+	for j in tr:
+		for c in m.values():
+			if j.id == c[2]:
+				x[j.id]=c[1],j.img.url
+	return render(request,'html/main.html',{'h':h,'o':o,'ru':ru,'s':z.values(),'b':x.values()})
 
 def visible(request):
 	t = Orgdetails.objects.get(us_id=request.user.id)
 	s = Donate.objects.filter(donating_to=t.org_name)
+	y = Donate.objects.all()
+	p = []
+	for b in y:
+		p.append(b.uid_id)
+	m = {}
+	for n in s:
+		if n.uid_id in p:
+			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
+	z = {}
+	tr = User.objects.all()
+	for j in tr:
+		for c in m.values():
+			if j.id == c[3]:
+				z[j.id]=c[1],c[2],j.img.url
 	oc= OccDonate.objects.filter(donating_to=t.org_name)
-	return render(request,'html/main.html',{'s':s,'oc':oc})
+	q = OccDonate.objects.all()
+	p = []
+	for b in q:
+		p.append(b.uid_id)
+	m = {}
+	for n in oc:
+		if n.uid_id in p:
+			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
+	h = {}
+	ab = User.objects.all()
+	for i in ab:
+		for c in m.values():
+			if i.id == c[3]:
+				h[i.id]=c[1],c[2],i.img.url
+	# print(z)
+	return render(request,'html/main.html',{'s':s,'oc':oc,'t':z.values(),'h':h.values()})
 
 def profile(request):
 	return render(request,'html/profile.html')
@@ -320,43 +378,60 @@ def workerdelete(request,wd):
 		return redirect('/dash')
 	return render(request,'html/orgdelete.html',{'d':d})
 
+
+
+def userreq(request):
+	if request.method=="POST":
+		u=request.POST.get('uname')
+		e=request.POST.get('email')
+		ut=request.POST.get('utype')
+		ud=request.POST.get('uid')
+		ms=request.POST.get('msg')
+		f=request.FILES['fe']
+		a="Hi welcome "+u+"<br/>" "Requested your Role as "+ut+"<br/>" "Your ID is:"+ud
+		t = EmailMessage("UserRole Change",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		t.content_subtype='html'
+		t.attach(f.name,f.read(),f.content_type)
+		t.send()
+		if t==1:
+			return redirect('/ureq')
+	return render(request,'html/userreq.html')
+
 def donorinfo(request):
-	n=Donor_info.objects.filter(don_id=request.user.id)
 	if request.method == "POST":
-		d=Donorinfoform(request.POST)
-		if d.is_valid():
-			o=d.save(commit=False)
-			o.don_id=request.user.id
-			o.save()
-			f=request.FILES['rep']
-			sb = "Donation Usage Information Regarding"
-			mg = "Hi {}. First of all we wanted to Thankyou on behalf of our Organisation for your generosity in donating {} to our Organisation on {}.""<br>""We just wanted to let you know how much help did your donation made...We used your donation for {}.""<br>""Here we are attesting you the 'TAX EXEMPTIONABLE RECEIPT'""<br>""We appreciate your support...THANK YOU :)".format(o.donor_name,o.donated_thing,o.donated_on,o.used_for)
-			sd = settings.EMAIL_HOST_USER
-			snt = send_mail(sb,mg,sd,[o.donor_email,request.user.email])
-			if snt == 1:
-				o.save()
-				return redirect('/doninfo')
-			else:
-				return redirect('/dash')
-	d=Donorinfoform()
-	return render(request,'html/donorinfo.html',{'d':d,'n':n})
+		u=request.POST.get('uname')
+		e=request.POST.get('email')
+		d=request.POST.get('dtype')
+		da=request.POST.get('ddate')
+		us=request.POST.get('usage')
+		f=request.FILES['fe']
+		a="Hi " +u+"," "<br/>" "First of all we wanted to Thankyou on behalf of our Organisation for your generosity in donating "+d+" to our Organisation on "+da+".""<br/>""We just wanted to let you know how much help did your donation made...We used your donation for "+us+".""<br/>""Here we are attesting you the 'TAX EXEMPTIONABLE RECEIPT'""<br/>""We appreciate your support...THANK YOU :)"
+		t = EmailMessage("Donation Usage and Invoice",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		t.content_subtype='html'
+		t.attach(f.name,f.read(),f.content_type)
+		t.send()
+		if t==1:
+			return redirect('/vis')
+		else:
+			return redirect('/vis')
+	return render(request,'html/donorinfo.html')
 
-def donorinfoupdate(request,du):
-	do=Donor_info.objects.get(id=du)
-	if request.method == "POST":
-		z=Donorinfoform(request.POST,instance=do)
-		if z.is_valid():
-			z.save()
-			return redirect('/doninfo')
-	p=Donorinfoform(instance=do)
-	return render(request,'html/donorinfoupdate.html',{'p':p})
+# def donorinfoupdate(request,du):
+# 	do=Donor_info.objects.get(id=du)
+# 	if request.method == "POST":
+# 		z=Donorinfoform(request.POST,instance=do)
+# 		if z.is_valid():
+# 			z.save()
+# 			return redirect('/doninfo')
+# 	p=Donorinfoform(instance=do)
+# 	return render(request,'html/donorinfoupdate.html',{'p':p})
 
-def donorinfodelete(request,dd):
-	d=Donor_info.objects.get(id=dd)
-	if request.method == "POST":
-		d.delete()
-		return redirect('/doninfo')
-	return render(request,'html/orgdelete.html',{'d':d})
+# def donorinfodelete(request,dd):
+# 	d=Donor_info.objects.get(id=dd)
+# 	if request.method == "POST":
+# 		d.delete()
+# 		return redirect('/doninfo')
+# 	return render(request,'html/orgdelete.html',{'d':d})
 
 
 def change(request):
@@ -431,7 +506,7 @@ def paymentdon(request,pd):
 		v=DonateForm(request.POST,instance=d)
 		if v.is_valid():
 			v.save()
-			return redirect('/main')
+			return redirect('/pm')
 	p=DonateForm(instance=d)
 	return render(request,'html/paymentdon.html',{'p':p})
 
@@ -441,7 +516,7 @@ def paymentocc(request,po):
 		c=OccDonateForm(request.POST,instance=s)
 		if c.is_valid():
 			c.save()
-			return redirect('/main')
+			return redirect('/pm')
 	o=OccDonateForm(instance=s)
 	return render(request,'html/paymentocc.html',{'o':o})
 
@@ -479,3 +554,6 @@ def feedback(request):
 
 def thankyou(request):
 	return render(request,'html/thankyou.html')
+
+def paymsg(request):
+	return render(request,'html/paymsg.html')

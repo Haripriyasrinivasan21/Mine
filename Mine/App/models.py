@@ -84,12 +84,4 @@ class Worker_details(models.Model):
 	salary = models.CharField(max_length=100)
 	wor = models.ForeignKey(User,on_delete=models.CASCADE)
 
-class Donor_info(models.Model):
-	donor_name = models.CharField(max_length=50)
-	donor_email=models.EmailField(max_length=50)
-	donated_thing = models.CharField(max_length=100)
-	donated_on = models.DateField(null=True)
-	used_for = models.CharField(max_length=200)
-	rep= models.ImageField(upload_to='Receipts/',default="receipt.png")
-	don = models.ForeignKey(User,on_delete=models.CASCADE)
 
