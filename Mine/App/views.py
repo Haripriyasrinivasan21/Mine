@@ -378,25 +378,6 @@ def workerdelete(request,wd):
 		return redirect('/dash')
 	return render(request,'html/orgdelete.html',{'d':d})
 
-
-
-def userreq(request):
-	if request.method=="POST":
-		u=request.POST.get('uname')
-		e=request.POST.get('email')
-		ut=request.POST.get('utype')
-		ud=request.POST.get('uid')
-		ms=request.POST.get('msg')
-		f=request.FILES['fe']
-		a="Hi welcome "+u+"<br/>" "Requested your Role as "+ut+"<br/>" "Your ID is:"+ud
-		t = EmailMessage("UserRole Change",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
-		t.content_subtype='html'
-		t.attach(f.name,f.read(),f.content_type)
-		t.send()
-		if t==1:
-			return redirect('/ureq')
-	return render(request,'html/userreq.html')
-
 def donorinfo(request):
 	if request.method == "POST":
 		u=request.POST.get('uname')
@@ -405,8 +386,8 @@ def donorinfo(request):
 		da=request.POST.get('ddate')
 		us=request.POST.get('usage')
 		f=request.FILES['fe']
-		a="Hi " +u+"," "<br/>" "First of all we wanted to Thankyou on behalf of our Organisation for your generosity in donating "+d+" to our Organisation on "+da+".""<br/>""We just wanted to let you know how much help did your donation made...We used your donation for "+us+".""<br/>""Here we are attesting you the 'TAX EXEMPTIONABLE RECEIPT'""<br/>""We appreciate your support...THANK YOU :)"
-		t = EmailMessage("Donation Usage and Invoice",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e])
+		a="Hi " +u+"," "<br/>" "First of all we wanted to Thankyou on behalf of our Organisation for your generosity in donating "+d+" to our Organisation on "+da+".""<br/>""We just wanted to let you know how much help did your donation made...""<br/>""Usage of you Donation: "+us+".""<br/>""Here we are attesting you the 'TAX EXEMPTIONABLE RECEIPT'""<br/>""We appreciate your support...THANK YOU :)"
+		t = EmailMessage("Donation Usage and Invoice",a,settings.EMAIL_HOST_USER,[settings.ADMINS[0][1],e,request.user.email])
 		t.content_subtype='html'
 		t.attach(f.name,f.read(),f.content_type)
 		t.send()
@@ -415,24 +396,6 @@ def donorinfo(request):
 		else:
 			return redirect('/vis')
 	return render(request,'html/donorinfo.html')
-
-# def donorinfoupdate(request,du):
-# 	do=Donor_info.objects.get(id=du)
-# 	if request.method == "POST":
-# 		z=Donorinfoform(request.POST,instance=do)
-# 		if z.is_valid():
-# 			z.save()
-# 			return redirect('/doninfo')
-# 	p=Donorinfoform(instance=do)
-# 	return render(request,'html/donorinfoupdate.html',{'p':p})
-
-# def donorinfodelete(request,dd):
-# 	d=Donor_info.objects.get(id=dd)
-# 	if request.method == "POST":
-# 		d.delete()
-# 		return redirect('/doninfo')
-# 	return render(request,'html/orgdelete.html',{'d':d})
-
 
 def change(request):
 	if request.method == "POST":
@@ -529,11 +492,11 @@ def Login_valid(request):
 		user=authenticate(request,username=username,password=password)
 
 		if not user:
-			messages.add_message(request,messages.WARNING,'Invalid Credentials, Please Enter the valid Details...')
+			messages.add_message(request,messages.INFO,'Invalid Credentials, Please Enter the valid Details...')
 			return render(request,'html/login.html')
 		else:
 			login(request,user)
-			messages.add_message(request,messages.INFO,f'Welcome {user.username}, Have a good time :)')
+			messages.add_message(request,messages.SUCCESS,f'Welcome {user.username}, Have a good time :)')
 			return redirect('/main')
 	return render(request,'html/login.html')
 

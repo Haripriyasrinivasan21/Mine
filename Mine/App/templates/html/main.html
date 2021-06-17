@@ -39,9 +39,9 @@
 		<h4 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4><br>
 		{% elif user.role == 2 %}
 		<h3>Welcome Organiser</h3>
-		<h5>View Full Details By Clicking...
-			<a href="{% url 'ct' %}">Children's Details.. :) </a> and 
-			<a href="{% url 'wt' %}"> Worker's Details.. :)</a></h5>
+		<h5>View the Details of Total No.of Children and Workers, By Clicking...
+			<a href="{% url 'ct' %}">All Children's Details.. :) </a> and 
+			<a href="{% url 'wt' %}">All Worker's Details.. :)</a></h5>
 		{% else %}
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Welcome {{user.username}}, Know the information of the Donations <a href="{% url 'info' %}">By Clicking Here.. :)</a></h3>
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">You are in the Guest Mode... Request your needed Role to avail Services :)</h3>

@@ -1,8 +1,12 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% extends 'html/base.html' %}
 {% block title %}Child Details{% endblock %}
 {% block content %}
-<div class="container-fluid mt-4">
-<div class="card col-md mt-2 mx-2 shadow-lg">
+<div class="bg-image"
+      style="background-image:url('https://wallpapercave.com/wp/wp5299687.jpg');background-repeat:no-repeat;background-size:100%; height:100%">
+      <h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bolder;">Child's Details</h3>
+<div class="container-fluid mt-1">
+<div class="col-md mt-2 mx-2 shadow-lg">
                   <div class="card-body">
                         {% if sh %}
                         <table class="table table-borderless table-center">
@@ -28,8 +32,9 @@
                               <td>{{sh.exit_date}}</td>
                               <td>{{sh.about}}</td>
                               <td colspan="3">
-                                    <a href="{% url 'chupd' sh.id %}" class="btn btn-outline-success my-1 text-success">Update</a>
-                                    <a href="{% url 'chdel' sh.id %}" class="btn btn-outline-danger my-1 text-danger">Delete</a>
+                                    <a href="{% url 'chupd' sh.id %}" class="btn btn-success my-1">Update</a>
+                                    <a href="{% url 'chdel' sh.id %}" class="btn btn-danger my-1">Delete</a>
+                                    <a href="{% url 'dash' %}" class="btn btn-warning my-1">Back to main</a>
                               </td>
                         </tr>
                         {% endif %}
