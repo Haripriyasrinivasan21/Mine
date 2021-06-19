@@ -42,36 +42,17 @@ def mainpage(request):
 	h=Donate.objects.filter(uid_id=request.user.id)
 	o=OccDonate.objects.filter(uid_id=request.user.id)
 	ru=User.objects.all()
-	t = Orgdetails.objects.filter(us_id=request.user.id)
-	y = Donate.objects.all()
-	p = []
-	for b in y:
-		p.append(b.uid_id)
-	m = {}
-	for n in h:
-		if n.uid_id in p:
-			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
-	z = {}
-	tr = User.objects.all()
-	for j in tr:
-		for c in m.values():
-			if j.id == c[3]:
-				z[j.id]=c[1],c[2],j.img.url
-	rk = Orgdetails.objects.all()
-	p = []
-	for b in rk:
-		p.append(b.us_id)
-	m = {}
-	for n in t:
-		if n.us_id in p:
-			m[n.id] = n.id,n.org_name,n.us_id
-	x = {}
-	tr = User.objects.all()
-	for j in tr:
-		for c in m.values():
-			if j.id == c[2]:
-				x[j.id]=c[1],j.img.url
-	return render(request,'html/main.html',{'h':h,'o':o,'ru':ru,'s':z.values(),'b':x.values()})
+	t = {}
+	for q in h:
+		for v in ru:
+			if v.username == q.donating_to:
+				t[q.id] = q.username,q.donating_to,v.img.url
+	s = {}
+	for p in o:
+		for u in ru:
+			if u.username == p.donating_to:
+				s[p.id] = p.username,p.donating_to,u.img.url
+	return render(request,'html/main.html',{'o':t.values(),'d':s.values(),'ru':ru})
 
 def visible(request):
 	t = Orgdetails.objects.get(us_id=request.user.id)
@@ -145,6 +126,11 @@ def rolereq(request):
 				return redirect('/main')
 			else:
 				return redirect('/')
+		random_id=request.POST.get('idgen')
+		rolrq=authenticate(request.user,idgen=random_id)
+		if not user:
+			messages.add_message(request,messages.WARNING,'Id is not matching..Enter the ID that has been sent to your Mail')
+			return render(request,'html/rolereq.html',{'n':m})	
 	m = RolerqForm()
 	return render(request,'html/rolereq.html',{'n':m})
 

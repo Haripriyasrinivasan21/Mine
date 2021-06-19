@@ -23,12 +23,16 @@
 					<th class="text-center" style="font-family:Garamond;font-weight:bold;">S.No</th>
 					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Username</th>
 					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Email id</th>
+					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Registered On</th>
+					<th class="text-center" style="font-family:Garamond;font-weight:bold;">Last Login</th>
 				</tr>
 				{% for i in ru %}
             		<tr>
             			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{forloop.counter}}.</td>
             			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.username}}</td>
             			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.email}}</td>
+            			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.date_joined}}</td>
+            			<td class="text-center" style="font-family:Garamond;font-weight:bold;">{{i.last_login}}</td>
             		</tr>
             	{% endfor %}
             </table>
@@ -48,12 +52,10 @@
 		{% endif %}
 		{% if user.role == 1 %}
 	<div class="row">
-			{% for j in s %}
+			{% for j in o %}
 	<div class="col col-md-4">
 	<div class="card my-2 mx-1">
-		{% for a in b %}
-	<img class="card-img-top" src="{{a.1}}" alt="Card image" style="height:300px;width:100%"><h5>Donation By : {{a.0}}</h5>
-		{% endfor %}
+	<img class="card-img-top" src="{{j.2}}" alt="Card image" style="height:300px;width:100%">
 	<div class="card-body">
 	<h5 class="text-danger">Periodically Donating</h5>
 	<h5>Donation By : {{j.0}}</h5>
@@ -63,7 +65,7 @@
 </div>
 </div>
 {% endfor %}
-{% for i in h %}
+{% for i in d %}
 <div class="col col-md-4">
 <div class="card my-2 mx-1">
 <img class="card-img-top" src="{{i.2}}" alt="Card image" style="height:300px;width:100%">

@@ -84,7 +84,7 @@ class RolerqForm(forms.ModelForm):
 			}),
 		"random_id":forms.TextInput(attrs={
 			"class":"form-control-plaintext my-2",
-			"placeholder":"Enter the id received in ur mail",
+			"placeholder":"Enter the id received in your mail",
 			}),
 		}
 
@@ -128,8 +128,16 @@ class OrgForm(forms.ModelForm):
 class DonateForm(forms.ModelForm):
 	class Meta:
 		model=Donate
-		fields=["ways_to_donate","donating_to","sponsor_way","donating_date"]
+		fields=["username","email","ways_to_donate","donating_to","sponsor_way","donating_date"]
 		widgets={
+		"username":forms.TextInput(attrs={
+			"class":"form-control my-2",
+			"placeholder":"Enter your User Name",
+			}),
+		"email":forms.EmailInput(attrs={
+			"class":"form-control my-2",
+			"placeholder":"Enter your Mail ID",
+			}),
 		"ways_to_donate":forms.Select(attrs={
 			"class":"form-control my-2",
 			}),
@@ -149,26 +157,30 @@ class DonateForm(forms.ModelForm):
 class OccDonateForm(forms.ModelForm):
 	class Meta:
 		model=OccDonate
-		fields=["occ_name","donating_to","sponsor_way","donating_on"]
+		fields=["username","email","occ_name","donating_to","sponsor_way","donating_on"]
 		widgets={
+		"username":forms.TextInput(attrs={
+			"class":"form-control my-2",
+			"placeholder":"Enter your User Name"
+			}),
+		"email":forms.EmailInput(attrs={
+			"class":"form-control my-2",
+			"placeholder":"Enter the your Mail ID",
+			}),
 		"occ_name":forms.TextInput(attrs={
 			"class":"form-control my-2",
 			"placeholder":"Occasion Name",
-			"required":True,
 			}),
 		"donating_to":forms.TextInput(attrs={
 			"class":"form-control my-2",
 			"placeholder":"Organisation Name",
-			"required":True,
 			}),
 		"sponsor_way":forms.Select(attrs={
 			"class":"form-control my-2",
-			"required":True,
 			}),
 		"donating_on":forms.DateInput(attrs={
 			"class":"form-control my-2",
 			"placeholder":"Enter the date of donation",
-			"required":True,
 			}),
 		}
 
