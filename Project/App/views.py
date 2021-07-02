@@ -64,13 +64,13 @@ def visible(request):
 	m = {}
 	for n in s:
 		if n.uid_id in p:
-			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
+			m[n.id] = n.id,n.username,n.email,n.donating_to,n.ways_to_donate,n.sponsor_way,n.donating_date,n.uid_id
 	z = {}
 	tr = User.objects.all()
 	for j in tr:
 		for c in m.values():
-			if j.id == c[3]:
-				z[j.id]=c[1],c[2],j.img.url
+			if j.id == c[7]:
+				z[j.id]=c[1],c[2],c[3],c[4],c[5],c[6],j.img.url
 	oc= OccDonate.objects.filter(donating_to=t.org_name)
 	q = OccDonate.objects.all()
 	p = []
@@ -79,13 +79,13 @@ def visible(request):
 	m = {}
 	for n in oc:
 		if n.uid_id in p:
-			m[n.id] = n.id,n.username,n.donating_to,n.uid_id
+			m[n.id] = n.id,n.username,n.email,n.donating_to,n.occ_name,n.sponsor_way,n.donating_on,n.uid_id
 	h = {}
 	ab = User.objects.all()
 	for i in ab:
 		for c in m.values():
-			if i.id == c[3]:
-				h[i.id]=c[1],c[2],i.img.url
+			if i.id == c[7]:
+				h[i.id]=c[1],c[2],c[3],c[4],c[5],c[6],i.img.url
 	# print(z)
 	return render(request,'html/main.html',{'s':s,'oc':oc,'t':z.values(),'h':h.values()})
 
@@ -506,3 +506,6 @@ def thankyou(request):
 
 def paymsg(request):
 	return render(request,'html/paymsg.html')
+
+def carosel(request):
+	return render(request,'html/carosel.html')	

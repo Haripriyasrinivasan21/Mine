@@ -40,8 +40,6 @@ urlpatterns = [
     path('cdel/<int:cd>/',views.childdelete,name="chdel"),
     path('wup/<int:wu>/',views.workerupdate,name="worup"),
     path('wdel/<int:wd>/',views.workerdelete,name="wordel"),
-    # path('dup/<int:du>/',views.donorinfoupdate,name="diup"),
-    # path('ddel/<int:dd>/',views.donorinfodelete,name="dondel"),
     path('dontab1/',views.donationtable1,name="dtab1"),
     path('dontab2/',views.donationtable2,name="dtab2"),
     path('info/',views.information,name="info"),
@@ -57,4 +55,5 @@ urlpatterns = [
     path('feed/',views.feedback,name="fb"),
     path('tq/',views.thankyou,name="thq"),
     path('pm/',views.paymsg,name="pmg"),
+    path('car/',views.carosel,name="cr"),
 ]

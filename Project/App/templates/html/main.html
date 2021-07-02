@@ -42,10 +42,7 @@
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Hi {{user.username}} Donor, Here are your Donations... :)</h3>
 		<h4 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Wanna have a look at the Organisation Details... <a href="{% url 'details' %}">Click Here.. :)</a></h4><br>
 		{% elif user.role == 2 %}
-		<h3>Welcome Organiser</h3>
-		<h5>View the Details of Total No.of Children and Workers, By Clicking...
-			<a href="{% url 'ct' %}">All Children's Details.. :) </a> and 
-			<a href="{% url 'wt' %}">All Worker's Details.. :)</a></h5>
+		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Welcome Organiser, Here are the Donations to your Organisation :)</h3>
 		{% else %}
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">Welcome {{user.username}}, Know the information of the Donations <a href="{% url 'info' %}">By Clicking Here.. :)</a></h3>
 		<h3 class="text-center text-dark" style="font-family:Garamond;font-weight:bold;">You are in the Guest Mode... Request your needed Role to avail Services :)</h3>
@@ -87,12 +84,16 @@
 			{% for j in t %}
 	<div class="col col-md-4">
 	<div class="card my-2">
-	<img class="card-img-top" src="{{j.2}}" alt="Card image" style="height:150px;width:100%">
+	<img class="card-img-top" src="{{j.6}}" alt="Card image" style="height:200px;width:100%">
 	<div class="card-body">
-		<h5 class="text-danger">Periodically Donating</h5>
-		<h5>Donated By : {{j.0}}</h5>
-		<h5>Donated to: {{j.1}}</h5>
-		<a href="{% url 'otab1' %}" class="btn btn-secondary form-control">View</a>
+		<h6 class="text-danger">Periodically Donating</h6>
+		<h5>Donated to: {{j.2}}</h5>
+		<h6>Donated By : {{j.0}}</h6>
+		<h6>Donor mail : {{j.1}}</h6>
+		<h6>Donating way: {{j.3}}</h6>
+		<h6>Sponsor way: {{j.4}}</h6>
+		<h6>Donated on: {{j.5}}</h6>
+		<!-- <a href="{% url 'otab1' %}" class="btn btn-secondary form-control">View</a> -->
 	</div>
 </div>
 </div>
@@ -100,12 +101,16 @@
 	{% for i in h %}
 	<div class="col col-md-4">
 	<div class="card my-2">
-	<img class="card-img-top" src="{{i.2}}" alt="Card image" style="height:150px;width:100%">
+	<img class="card-img-top" src="{{i.6}}" alt="Card image" style="height:150px;width:100%">
 	<div class="card-body">
 		<h5 class="text-warning">Occassionally Donating</h5>
-		<h5>Donated By : {{i.0}}</h5>
-		<h5>Donated to: {{i.1}}</h5>
-		<a href="{% url 'otab2' %}" class="btn btn-secondary form-control">View</a>
+		<h5>Donated to: {{i.2}}</h5>
+		<h6>Donated By : {{i.0}}</h6>
+		<h6>Donor mail : {{i.1}}</h6>
+		<h6>Occasion Name: {{i.3}}</h6>
+		<h6>Sponsor way: {{i.4}}</h6>
+		<h6>Donated on: {{i.5}}</h6>
+		<!-- <a href="{% url 'otab2' %}" class="btn btn-secondary form-control">View</a> -->
 	</div>
 </div>
 </div>
